@@ -1,75 +1,62 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a href="https://vuetifyjs.com" target="_blank"> documentation </a>.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a href="https://chat.vuetifyjs.com/" target="_blank" title="chat">
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a href="https://nuxtjs.org/" target="_blank">
-            Nuxt Documentation
-          </a>
-          <br />
-          <a href="https://github.com/nuxt/nuxt.js" target="_blank">
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire">
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <div id="homePage" class="page">
+    <div class="header">
+      <v-container>
+        <v-layout row wrap>
+          <v-flex lg6>
+            <a href="/">
+              <img class="logo-header" src="~/assets/img/logo_color.png" />
+            </a>
+          </v-flex>
+          <v-flex lg6 class="align-right">
+            <v-btn id="btnLogin" class="btn btn-secondary">Sign In</v-btn>
+            <v-btn id="btnRegister" class="btn btn-primary">Sign Up</v-btn>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </div>
+    <div class="home-section">
+      <v-container>Testing</v-container>
+    </div>
+    <Footer />
+  </div>
 </template>
-
+<style>
+.header {
+  background-color: #c1f5e4;
+}
+.header .logo-header {
+  height: 50px;
+}
+.home-section {
+  padding: 30px 0;
+  background-color: #c1f5e4;
+}
+.btn {
+  height: 40px;
+  box-shadow: none;
+  border-radius: 20px;
+  width: 130px;
+}
+.btn.btn-primary {
+  color: white;
+  background-color: #ff7a76 !important;
+}
+.btn.btn-secondary {
+  color: #ff7a76;
+  background-color: #c1f5e4 !important;
+  border: solid 2px #ff7a76;
+}
+#btnLogin {
+  margin: 0px 20px;
+}
+</style>
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+const components = {
+  Footer: () => import('~/components/Footer' /* webpackChunkName: "Footer" */)
+}
 
 export default {
-  components: {
-    Logo,
-    VuetifyLogo
-  }
+  components
 }
 </script>
