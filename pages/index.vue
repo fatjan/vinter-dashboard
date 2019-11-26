@@ -1,75 +1,163 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a href="https://vuetifyjs.com" target="_blank"> documentation </a>.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a href="https://chat.vuetifyjs.com/" target="_blank" title="chat">
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a href="https://nuxtjs.org/" target="_blank">
-            Nuxt Documentation
-          </a>
-          <br />
-          <a href="https://github.com/nuxt/nuxt.js" target="_blank">
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire">
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <div id="homePage" class="page">
+    <div class="header">
+      <v-container>
+        <v-layout row wrap>
+          <v-flex lg6>
+            <a href="/">
+              <img class="logo-header" src="~/assets/img/logo_color.png" />
+            </a>
+          </v-flex>
+          <v-flex lg6 class="align-right">
+            <nuxt-link to="/signin">
+              <v-btn id="btnSignIn" class="btn btn-secondary btn-login"
+                >Sign In</v-btn
+              >
+            </nuxt-link>
+            <nuxt-link to="/signup">
+              <v-btn id="btnSignUp" class="btn btn-primary btn-register"
+                >Sign Up</v-btn
+              >
+            </nuxt-link>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </div>
+    <div class="section home-section">
+      <v-container>
+        <v-layout row wrap>
+          <v-flex lg6>
+            <img src="~/assets/img/home-illustration.png" alt="" />
+          </v-flex>
+          <v-flex lg6>
+            <h1>Awali Karirmu Di Sini</h1>
+            <p>Vinter membantu kamu mempersiapkan karir</p>
+            <p>di perusahaan impianmu</p>
+            <form action class="header-form">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Silahkan masukkan email kamu"
+                  aria-label="Silahkan masukkan email kamu"
+                  aria-describedby="basic-addon2"
+                />
+                <div class="input-group-append">
+                  <button id="basic-addon2" class="btn btn-primary">
+                    Mulai Magang
+                  </button>
+                </div>
+              </div>
+            </form>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </div>
+    <div class="section benefit">
+      <v-container>
+        <v-layout row wrap>
+          <v-flex lg4>
+            <div class="card" style="height:250px; margin:0px 50px"></div>
+          </v-flex>
+          <v-flex lg4>
+            <div class="card" style="height:250px; margin:0px 50px"></div>
+          </v-flex>
+          <v-flex lg4>
+            <div class="card" style="height:250px; margin:0px 50px"></div>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </div>
+    <Footer />
+  </div>
 </template>
-
+<style>
+#homePage p {
+  font-family: 'Muli', sans-serif;
+}
+#homePage h1 {
+  font-family: 'Muli', sans-serif;
+  font-weight: 900;
+  margin-bottom: 0px;
+}
+.header {
+  background-color: #c1f5e4;
+  padding: 15px 0px;
+}
+.header .logo-header {
+  height: 50px;
+}
+.section {
+  padding: 40px 0;
+}
+.home-section {
+  background-color: #c1f5e4;
+  padding-bottom: 60px;
+}
+.home-section img {
+  height: 340px;
+  margin-left: 30px;
+}
+.home-section p {
+  margin-bottom: 0px;
+}
+.benefit {
+  margin-top: -100px;
+}
+.btn {
+  height: 40px;
+  box-shadow: none;
+  border-radius: 20px;
+  width: 130px;
+}
+.btn.btn-primary {
+  color: white;
+  background-color: #ff7a76 !important;
+  font-family: 'Muli', sans-serif;
+  border-color: #ff7a76;
+}
+.btn.btn-secondary {
+  color: #ff7a76;
+  background-color: #c1f5e4 !important;
+  border: solid 2px #ff7a76;
+  font-family: 'Muli', sans-serif;
+}
+.btn:hover {
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.1);
+}
+#btnLogin {
+  margin: 0px 20px;
+}
+.home-section .header-form {
+  position: relative;
+  padding-top: 20px;
+}
+.home-section .header-form .form-control {
+  border-color: #ff7a76;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding-left: 16px;
+  font-size: 14px;
+  font-family: 'SFCompactDisplay-Regular', sans-serif;
+}
+.home-section .header-form .btn {
+  font-family: 'Muli', sans-serif;
+  width: 140px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-right: 30px;
+}
+.btn-login:hover,
+.btn-register:hover {
+  text-decoration: none;
+}
+</style>
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+const components = {
+  Footer: () => import('~/components/Footer' /* webpackChunkName: "Footer" */)
+}
 
 export default {
-  components: {
-    Logo,
-    VuetifyLogo
-  }
+  components
 }
 </script>
