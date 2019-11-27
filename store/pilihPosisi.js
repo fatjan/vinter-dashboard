@@ -1,7 +1,6 @@
 export const state = () => ({
-  listCompany: [],
-  companyId: '',
-  company: ''
+  listPosition: [],
+  positionId: ''
 })
 
 export const mutations = {
@@ -12,18 +11,12 @@ export const mutations = {
 }
 
 export const actions = {
-  setAllCompany({ commit, state }, outcome) {
+  setAllPosition({ commit }, outcome) {
     commit('setState', {
-      listCompany: outcome.result
+      listPosition: outcome.result
     })
   },
-  setChosenCompany({ commit, state }, outcome) {
-    commit('setState', {
-      company: outcome.result
-    })
-    console.log('ini comp', state.company)
-  },
-  getAllCompany() {
+  getAllPosition() {
     const token = localStorage.getItem('token')
     this.$axios.setToken(token, 'Bearer')
     this.$axios.setHeader('Content-Type', 'application/json', ['get'])
@@ -31,14 +24,16 @@ export const actions = {
       console.log(err.response)
     })
   },
-  getCompanyById({ state }) {
+  getPositionById({ state }) {
     const token = localStorage.getItem('token')
+    console.log('token')
     this.$axios.setToken(token, 'Bearer')
     this.$axios.setHeader('Content-Type', 'application/json', ['get'])
     return this.$axios
-      .$get('company?id=' + state.companyId)
+      .$get('intern?id=' + state.companyId)
       .then((Response) => {})
       .catch((error) => {
+        // handle error
         if (error.response.status === 404) {
           console.log('aaaa')
         }

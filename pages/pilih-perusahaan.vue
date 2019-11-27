@@ -30,9 +30,13 @@
         <v-card @click="chooseCompany(item.id)" class="kotak-perusahaan">
           <div class="gambar align-center vmiddle">
             <img
-              src="(~/assets/img/logo_navbar@2x.png)"
+              v-bind:src="item.image"
               alt=""
               class="inside-pic"
+              style="max-height: 100% !important;
+              max-width: 100% !important;
+  -o-object-fit: contain !important;
+  object-fit: contain !important"
             />
           </div>
           <div class="text">
@@ -41,7 +45,7 @@
             </h5>
             <span>
               <p>
-                <img v-bind:src="item.image" alt="" width="8px" />
+                <img src="~/assets/img/portfolio.png" alt="" width="15px" />
                 {{ item.oportunity }} Posisi Magang
               </p>
             </span>
@@ -51,6 +55,42 @@
     </v-row>
   </v-container>
 </template>
+<style scoped>
+/* .rata-kiri {
+  margin-left: 30px;
+  margin-right: 30px;
+} */
+.perusahaan-title {
+  border: 1px solid #23573e;
+  width: 230px;
+  height: 50px;
+  margin-top: 75px;
+
+  color: white;
+  background-color: #23573e;
+}
+.rekom {
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+.kotak-perusahaan {
+  border: 1px solid black;
+  background-color: #d5f8ed !important;
+  margin-bottom: 20px;
+}
+.gambar {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 270px;
+  padding: 10px;
+}
+.text {
+  margin: 10px;
+}
+</style>
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
@@ -79,48 +119,9 @@ export default {
       )
     },
     chooseCompany(id) {
-      console.log('ni id', id)
       this.setState({ companyId: id })
       this.$router.push('/pilih-posisi')
     }
   }
 }
 </script>
-<style>
-/* .rata-kiri {
-  margin-left: 30px;
-  margin-right: 30px;
-} */
-.perusahaan-title {
-  border: 1px solid #23573e;
-  width: 230px;
-  height: 50px;
-  margin-top: 75px;
-
-  color: white;
-  background-color: #23573e;
-}
-.rekom {
-  border-bottom: 1px solid black;
-  padding-bottom: 10px;
-}
-.kotak-perusahaan {
-  border: 1px solid black;
-  background-color: #d5f8ed !important;
-  margin-bottom: 20px;
-}
-.gambar {
-  background-color: white;
-  /* border: 1px solid black; */
-  /* padding: 0px; */
-  /* margin: 0px; */
-  width: 100%;
-  height: 270px;
-}
-.inside-pic {
-  margin-top: 60px;
-}
-.text {
-  margin: 10px;
-}
-</style>

@@ -12,6 +12,7 @@
             <p>
               BukaToko adalah startup e-commerce pertama di Bojonegoro. Start-up
               ini membantu IKM di Bojonegoro memasarkan produk mereka.
+              {{ company }}
             </p>
           </v-col>
           <v-col cols="12" xs="12" sm="12" md="1" lg="1" xl="1">
@@ -39,7 +40,7 @@
               width="25px"
               class="mini-img"
             />
-            Kab. Bojonegoro
+            {{ company.address }}, Kab. Bojonegoro
           </h5>
         </v-col>
         <v-col cols="12" xs="12" sm="12" md="9" lg="9" xl="9">
@@ -109,11 +110,7 @@
     </v-container>
   </div>
 </template>
-<script>
-export default {
-  layout: 'OtherPageLayout'
-}
-</script>
+
 <style scoped>
 .banner {
   background-color: #c1f5e4;
@@ -170,3 +167,46 @@ p {
   width: 230px;
 }
 </style>
+
+<script>
+import { mapState, mapMutations, mapActions } from 'vuex'
+export default {
+  layout: 'OtherPageLayout',
+  computed: {
+    ...mapState({
+      listPosition: (state) => state.pilihPosisi.listPosition,
+      company: (state) => state.pilihPerusahaan.company,
+      positionId: (state) => state.pilihPerusahaan.positionId
+    })
+  },
+  mounted() {
+    this.getCompanyById()
+  },
+  methods: {
+    ...mapActions({
+      getCompanyById: 'pilihPerusahaan/getCompanyById'
+    }),
+    ...mapMutations({ setState: 'pilihPosisi/setState' }),
+    async getPositionById() {
+      const getAllCompanies = await this.$store.dispatch(
+        'pilihPerusahaan/getAllCompany'
+      )
+      await this.$store.dispatch(
+        'pilihPerusahaan/setAllCompany',
+        getAllCompanies
+      )
+    },
+    chooseCompany(id) {
+      this.setState({ companyId: id })
+      this.$router.push('/pilih-posisi')
+    },
+    async getCompany() {
+      const getSelectedCompany = await this.getCompanyById
+      await this.$store.dispatch(
+        'pilihPerusahaan/setChosenCompany',
+        getSelectedCompany
+      )
+    }
+  }
+}
+</script>
