@@ -1,9 +1,5 @@
 <template>
-  <div
-    id="dashboardPage"
-    class="page"
-    style="min-height:63vh; margin-top:80px;"
-  >
+  <div id="dashboardPage" class="page">
     <v-layout row wrap>
       <h1>Dashboard</h1>
     </v-layout>
