@@ -22,14 +22,33 @@
     </v-row>
     <v-container>
       <v-row>
-        <v-col cols="12" xs="12" sm="12" md="3" lg="3" xl="3">
+        <v-col cols="12" xs="12" sm="12" md="3" lg="3" xl="3" class="left">
           <h5>
-            <img src="" alt="" />
+            <img
+              src="~/assets/img/portfolio.png"
+              alt=""
+              width="25px"
+              class="mini-img"
+            />
             E-Commerce
+          </h5>
+          <h5>
+            <img
+              src="~/assets/img/location.png"
+              alt=""
+              width="25px"
+              class="mini-img"
+            />
+            Kab. Bojonegoro
           </h5>
         </v-col>
         <v-col cols="12" xs="12" sm="12" md="9" lg="9" xl="9">
-          Posisi Tersedia
+          <h4>
+            Posisi Tersedia
+          </h4>
+          <v-row>
+            <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4"> </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>
@@ -50,11 +69,22 @@ export default {
 .dot {
   padding-top: 15px;
 }
+h5,
+h4,
 h3,
 p {
   color: #23573e;
 }
+h5 {
+  padding-bottom: 10px;
+}
 p {
   font-size: 18px;
+}
+.left {
+  padding-top: 25px;
+}
+.mini-img {
+  margin-right: 10px;
 }
 </style>
