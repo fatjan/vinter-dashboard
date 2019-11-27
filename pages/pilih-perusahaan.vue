@@ -18,8 +18,8 @@
     </v-row>
     <v-row class="rata-kiri">
       <v-col
-        v-for="(item, i) in items"
-        :key="i"
+        v-for="item in listCompany"
+        :key="item.id"
         cols="12"
         xs="12"
         sm="12"
@@ -27,22 +27,22 @@
         lg="3"
         xl="3"
       >
-        <v-card class="kotak-perusahaan">
+        <v-card @click="chooseCompany(item.id)" class="kotak-perusahaan">
           <div class="gambar align-center vmiddle">
             <img
-              src="~/assets/img/logo_navbar@2x.png"
+              src="(~/assets/img/logo_navbar@2x.png)"
               alt=""
               class="inside-pic"
             />
           </div>
           <div class="text">
             <h5>
-              HaloDoc
+              {{ item.name }}
             </h5>
             <span>
               <p>
                 <img src="~/assets/img/arrow-orange.png" alt="" width="8px" />
-                4 Kesempatan
+                {{ item.oportunity }} Posisi Magang
               </p>
             </span>
           </div>
@@ -52,20 +52,36 @@
   </v-container>
 </template>
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
   layout: 'OtherPageLayout',
   data() {
-    return {
-      items: [
-        { data: '1' },
-        { data: '2' },
-        { data: '3' },
-        { data: '4' },
-        { data: '5' },
-        { data: '6' },
-        { data: '7' },
-        { data: '8' }
-      ]
+    return {}
+  },
+  computed: {
+    ...mapState({
+      listCompany: (state) => state.pilihPerusahaan.listCompany,
+      companyId: (state) => state.pilihPerusahaan.companyId
+    })
+  },
+  mounted() {
+    this.getCompany()
+  },
+  methods: {
+    ...mapMutations({ setState: 'pilihPerusahaan/setState' }),
+    async getCompany() {
+      const getAllCompanies = await this.$store.dispatch(
+        'pilihPerusahaan/getAllCompany'
+      )
+      await this.$store.dispatch(
+        'pilihPerusahaan/setAllCompany',
+        getAllCompanies
+      )
+    },
+    chooseCompany(id) {
+      console.log('ni id', id)
+      this.setState({ companyId: id })
+      this.$router.push('/pilih-posisi')
     }
   }
 }

@@ -11,71 +11,25 @@ export const mutations = {
 }
 
 export const actions = {
-  // ==================================================================================================================
-  // ***********************************************PROCESSING DATA RESULT FROM AXIOS*************************************************
-  // ==================================================================================================================
-  /*
-   * Change the state based on the results from axios
-   * @return nothing
-   */
-
-  setAllProduct({ commit }, outcome) {
-    commit('setState', { listProduct: outcome.data.records })
+  setAllCompany({ commit }, outcome) {
+    commit('setState', {
+      listCompany: outcome.result
+    })
   },
-  setAllProductType({ commit }, outcome) {
-    commit('setState', { listProductType: outcome.data })
+  getAllCompany() {
+    const token = localStorage.getItem('token')
+    this.$axios.setToken(token, 'Bearer')
+    this.$axios.setHeader('Content-Type', 'application/json', ['get'])
+    return this.$axios.$get('company/list').catch((err) => {
+      console.log(err.response)
+    })
   },
-  setProduct({ commit }, outcome) {
-    commit('setState', { name: outcome.data.Name })
-    commit('setState', { type: outcome.data.Type })
-    commit('setState', { description: outcome.data.Desc })
-  },
-  setAllProductDropdown({ commit }, outcome) {
-    commit('setState', { listProductDropdown: outcome.data })
-  },
-  // ==================================================================================================================
-  // ***********************************************AXIOS TO CRUD DATA*************************************************
-  // ==================================================================================================================
-  /*
-   * Function getAllProduct
-   * Desc get data Product
-   * @return promise
-   */
-
-  getAllProduct() {
+  getCompanyById({ state }) {
     const token = this.state.token
     this.$axios.setToken(token, 'Bearer')
     this.$axios.setHeader('Content-Type', 'application/json', ['get'])
     return this.$axios
-      .$post('product/all', {
-        page: 1,
-        limit: 100,
-        order_by: ['product.id'],
-        filters: []
-      })
-      .catch((err) => {
-        console.log(err.response)
-      })
-  },
-  getAllProductType() {
-    return this.$axios.$get('productType').catch((err) => {
-      console.log(err.response)
-    })
-  },
-  getAllProductDropdown() {
-    const token = this.state.token
-    this.$axios.setToken(token, 'Bearer')
-    this.$axios.setHeader('Content-Type', 'application/json', ['get'])
-    return this.$axios.$get('product/dropdown').catch((err) => {
-      console.log(err.response)
-    })
-  },
-  getProductById({ state }) {
-    const token = this.state.token
-    this.$axios.setToken(token, 'Bearer')
-    this.$axios.setHeader('Content-Type', 'application/json', ['get'])
-    return this.$axios
-      .$get('product/' + state.productID)
+      .$get('intern?id=' + state.companyId)
       .then((Response) => {})
       .catch((error) => {
         // handle error
