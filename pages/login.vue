@@ -19,9 +19,10 @@
                 Email Kamu
               </strong>
             </h2>
-            <form action class="header-form">
+            <v-form ref="form" @submit="login" action class="header-form">
               <div class="input-group">
                 <input
+                  v-model="email"
                   type="email"
                   class="form-control"
                   placeholder="Email"
@@ -30,18 +31,24 @@
               </div>
               <div class="input-group">
                 <input
-                  type="password"
+                  v-model="password"
+                  :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
+                  :type="showPassword ? 'text' : 'password'"
                   class="form-control"
                   placeholder="Password"
                   aria-label="Password"
                 />
               </div>
               <strong>
-                <v-btn id="btnSignUp" class="btn btn-primary btn-login">
+                <v-btn
+                  id="btnSignUp"
+                  @click="login"
+                  class="btn btn-primary btn-login"
+                >
                   Sign In</v-btn
                 >
               </strong>
-            </form>
+            </v-form>
             <div class="bottom-text">
               <p>Belum punya akun? <a href="">Sign Up Di sini</a></p>
               <a href="/">Back to Home</a>
@@ -54,6 +61,40 @@
     </v-row>
   </v-app>
 </template>
+
+<script>
+import Swal from 'sweetalert2'
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      showsPassword: false
+    }
+  },
+  methods: {
+    async login(e) {
+      e.preventDefault()
+      if (this.$refs.form.validate()) {
+        await this.$store
+          .dispatch('login/login', {
+            email: this.email,
+            password: this.password
+          })
+          .then(() => {
+            Swal.fire('Login berhasil. Selamat Datang di Vinter.')
+            this.formError = null
+            this.$router.push('/')
+          })
+          .catch((err) => {
+            this.formError = err
+          })
+      }
+    }
+  }
+}
+</script>
+
 <style>
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700,800&display=swap');
 .right {
