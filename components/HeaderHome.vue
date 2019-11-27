@@ -17,8 +17,8 @@
           >
           <v-btn
             id="btnSignUp"
-            class="btn btn-primary btn-register"
             @click="toRegister"
+            class="btn btn-primary btn-register"
             >Sign Up</v-btn
           >
         </v-flex>
