@@ -114,11 +114,10 @@
               </h2>
             </v-col>
             <v-col cols="8">
-              <h5>
-                Profil Perusahaan
-              </h5>
+              <h5>Profil Perusahaan {{ position.company_name }}</h5>
               <p>
                 Mempelajari profil perusahaan dan bidang bisnis
+                {{ position }}
               </p>
             </v-col>
             <v-col cols="3">
@@ -134,11 +133,7 @@
     </v-row>
   </v-container>
 </template>
-<script>
-export default {
-  layout: 'OtherPageLayout'
-}
-</script>
+
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700,800&display=swap');
 
@@ -213,3 +208,31 @@ h6 {
   margin: 10px 0px 15px 0px;
 }
 </style>
+
+<script>
+import { mapState, mapMutations } from 'vuex'
+export default {
+  layout: 'OtherPageLayout',
+  computed: {
+    ...mapState({
+      position: (state) => state.pilihPosisi.position,
+      listTask: (state) => state.daftarTugas.listTask
+    })
+  },
+  mounted() {
+    this.getTask()
+  },
+  methods: {
+    ...mapMutations({ setState: 'pilihPerusahaan/setState' }),
+    async getTask() {
+      const getAllTasks = await this.$store.dispatch('daftarTugas/getAllTask')
+      await this.$store.dispatch('daftarTugas/setAllTask', getAllTasks)
+    }
+    // seeTask(item) {
+    //   this.setState({ position: item })
+    //   console.log('itemposition', item)
+    //   this.$router.push('/daftar-tugas')
+    // }
+  }
+}
+</script>

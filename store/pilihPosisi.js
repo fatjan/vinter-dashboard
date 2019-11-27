@@ -1,6 +1,7 @@
 export const state = () => ({
   listPosition: [],
-  positionId: ''
+  positionId: '',
+  position: ''
 })
 
 export const mutations = {

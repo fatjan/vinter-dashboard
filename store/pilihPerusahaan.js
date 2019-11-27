@@ -12,7 +12,7 @@ export const mutations = {
 }
 
 export const actions = {
-  setAllCompany({ commit, state }, outcome) {
+  setAllCompany({ commit }, outcome) {
     commit('setState', {
       listCompany: outcome.result
     })

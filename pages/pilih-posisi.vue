@@ -71,7 +71,9 @@
                 </div>
               </v-card>
               <center>
-                <v-btn id="btnLihatTugas" dark>Lihat Tugas</v-btn>
+                <v-btn id="btnLihatTugas" @click="seeTask(item)" dark
+                  >Lihat Tugas</v-btn
+                >
               </center>
             </v-col>
           </v-row>
@@ -164,9 +166,10 @@ export default {
       )
       await this.$store.dispatch('pilihPosisi/setAllPosition', getAllPositions)
     },
-    choosePosition(id) {
-      this.setState({ companyId: id })
-      this.$router.push('/pilih-task')
+    seeTask(item) {
+      this.setState({ position: item })
+      console.log('itemposition', item)
+      this.$router.push('/daftar-tugas')
     }
   }
 }
