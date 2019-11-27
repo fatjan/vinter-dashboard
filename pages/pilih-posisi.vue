@@ -5,16 +5,12 @@
         <v-row>
           <v-col cols="12" xs="12" sm="12" md="11" lg="11" xl="11">
             <h2>
-              <strong>
-                {{ company.name }}
-              </strong>
+              <strong>{{ company.name }}</strong>
             </h2>
-            <p>
-              {{ company.description }}
-            </p>
+            <p>{{ company.description }}</p>
           </v-col>
           <v-col cols="12" xs="12" sm="12" md="1" lg="1" xl="1">
-            <img src="~/assets/img/dot.png" alt="" class="dot" />
+            <img src="~/assets/img/dot.png" alt class="dot" />
           </v-col>
         </v-row>
       </v-container>
@@ -25,26 +21,24 @@
           <h5>
             <img
               src="~/assets/img/portfolio.png"
-              alt=""
+              alt
               width="25px"
               class="mini-img"
             />
-            E-Commerce
+            {{ company.industry }}
           </h5>
           <h5>
             <img
               src="~/assets/img/location.png"
-              alt=""
+              alt
               width="25px"
               class="mini-img"
             />
-            {{ company.address }}, Kab. Bojonegoro
+            {{ company.address }}, {{ company.location }}
           </h5>
         </v-col>
         <v-col cols="12" xs="12" sm="12" md="9" lg="9" xl="9">
-          <h4>
-            Posisi Tersedia
-          </h4>
+          <h4>Posisi Tersedia</h4>
           <v-row>
             <v-col
               v-for="item in listPosition"
@@ -58,13 +52,9 @@
             >
               <v-card class="kotak-perusahaan">
                 <div class="gambar align-center vmiddle">
-                  <img v-bind:src="item.image" alt="" class="inside-pic" />
-                  <h4>
-                    {{ item.name }}
-                  </h4>
-                  <h4 style="font-size: 13px;">
-                    {{ item.description }}
-                  </h4>
+                  <img v-bind:src="item.image" alt class="inside-pic" />
+                  <h4>{{ item.name }}</h4>
+                  <h4 style="font-size: 13px;">{{ item.description }}</h4>
                   <h4 style="font-size: 13px;">
                     Nilai min. kelulusan: {{ item.certificate_trigger_score }}
                   </h4>
@@ -149,7 +139,8 @@ export default {
     ...mapState({
       listPosition: (state) => state.pilihPosisi.listPosition,
       company: (state) => state.pilihPerusahaan.company,
-      positionId: (state) => state.pilihPerusahaan.positionId
+      positionId: (state) => state.pilihPerusahaan.positionId,
+      position: (state) => state.pilihPosisi.position
     })
   },
   mounted() {
@@ -168,7 +159,7 @@ export default {
     },
     seeTask(item) {
       this.setState({ position: item })
-      console.log('itemposition', item)
+      console.log('itemposition', this.position)
       this.$router.push('/daftar-tugas')
     }
   }
