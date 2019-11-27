@@ -41,7 +41,7 @@
             </h5>
             <span>
               <p>
-                <img src="~/assets/img/arrow-orange.png" alt="" width="8px" />
+                <img v-bind:src="item.image" alt="" width="8px" />
                 {{ item.oportunity }} Posisi Magang
               </p>
             </span>
