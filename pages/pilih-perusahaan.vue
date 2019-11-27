@@ -3,9 +3,9 @@
     <v-row class="rata-kiri">
       <v-col>
         <div class="perusahaan-title align-center vertical-align-center">
-          <h3>
+          <h1>
             Perusahaan
-          </h3>
+          </h1>
         </div>
       </v-col>
     </v-row>
@@ -77,8 +77,8 @@ export default {
 } */
 .perusahaan-title {
   border: 1px solid #23573e;
-  width: 170px;
-  height: 35px;
+  width: 230px;
+  height: 50px;
   margin-top: 75px;
 
   color: white;

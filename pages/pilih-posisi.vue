@@ -4,11 +4,11 @@
       <v-container>
         <v-row>
           <v-col cols="12" xs="12" sm="12" md="11" lg="11" xl="11">
-            <h3>
+            <h2>
               <strong>
                 BukaToko
               </strong>
-            </h3>
+            </h2>
             <p>
               BukaToko adalah startup e-commerce pertama di Bojonegoro. Start-up
               ini membantu IKM di Bojonegoro memasarkan produk mereka.
@@ -47,7 +47,17 @@
             Posisi Tersedia
           </h4>
           <v-row>
-            <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4"> </v-col>
+            <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4">
+              <v-card class="kotak-perusahaan">
+                <div class="gambar align-center vmiddle">
+                  <img
+                    src="~/assets/img/logo_navbar@2x.png"
+                    alt=""
+                    class="inside-pic"
+                  />
+                </div>
+              </v-card>
+            </v-col>
           </v-row>
         </v-col>
       </v-row>
@@ -71,7 +81,7 @@ export default {
 }
 h5,
 h4,
-h3,
+h2,
 p {
   color: #23573e;
 }
