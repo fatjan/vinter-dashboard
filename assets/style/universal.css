@@ -683,7 +683,11 @@ dl {
 
 
 /*--- end Vertical Align ---*/
-
+/*--- pages ---*/
+.page {
+    min-height:63vh;
+    margin-top:80px;
+}
 
 /* sweet Alert  */
 

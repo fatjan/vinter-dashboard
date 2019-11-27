@@ -1,28 +1,5 @@
 <template>
   <div id="homePage" class="page">
-    <div class="header">
-      <v-container>
-        <v-layout row wrap>
-          <v-flex lg6>
-            <a href="/">
-              <img class="logo-header" src="~/assets/img/logo_color.png" />
-            </a>
-          </v-flex>
-          <v-flex lg6 class="align-right">
-            <nuxt-link to="/signin">
-              <v-btn id="btnSignIn" class="btn btn-secondary btn-login"
-                >Sign In</v-btn
-              >
-            </nuxt-link>
-            <nuxt-link to="/register">
-              <v-btn id="btnSignUp" class="btn btn-primary btn-register"
-                >Sign Up</v-btn
-              >
-            </nuxt-link>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </div>
     <div class="section home-section">
       <v-container>
         <v-layout row wrap>
@@ -68,7 +45,6 @@
         </v-layout>
       </v-container>
     </div>
-    <Footer />
   </div>
 </template>
 <style>
@@ -92,7 +68,7 @@
 }
 .home-section {
   background-color: #c1f5e4;
-  padding-bottom: 60px;
+  padding-bottom: 100px;
 }
 .home-section img {
   height: 340px;
@@ -153,11 +129,7 @@
 }
 </style>
 <script>
-const components = {
-  Footer: () => import('~/components/Footer' /* webpackChunkName: "Footer" */)
-}
-
 export default {
-  components
+  layout: 'HomePageLayout'
 }
 </script>
