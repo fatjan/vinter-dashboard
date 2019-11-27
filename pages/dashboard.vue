@@ -13,6 +13,7 @@
               </v-col>
               <v-col md="8" lg="8">
                 <h4>Hi, Nama</h4>
+                <p>Email@email.com</p>
               </v-col>
             </v-row>
           </div>
@@ -21,11 +22,17 @@
           <v-row>
             <v-col lg4>
               <div class="user-check align-center">
-                Sedang Berlangsung
+                <h5>Sedang Berlangsung</h5>
+                <h2>2</h2>
               </div>
             </v-col>
             <v-col lg4>
-              <div class="user-check align-center">Magang Selesai</div>
+              <div class="user-check align-center">
+                <h5>
+                  Magang Selesai
+                </h5>
+                <h2>1</h2>
+              </div>
             </v-col>
             <v-col lg4>
               <div class="user-check align-center">Certificate</div>
@@ -43,7 +50,7 @@
       </v-row>
       <v-row>
         <v-col
-          v-for="(item, index) in [1, 2]"
+          v-for="(item, index) in [0, 1, 2, 4]"
           :key="index"
           cols="12"
           md="6"
@@ -60,10 +67,10 @@
                 <div class="wrap-progress" style="width:100%">
                   <div class="progress-intern" style="width:60%"></div>
                 </div>
-                <button class="btn-primary">Lanjutkan Magangmu</button>
+                <v-btn class="btn-primary">Lanjutkan Magangmu</v-btn>
               </div>
               <div class="percentage-intern">
-                100%
+                60%
               </div>
             </v-row>
           </div>
@@ -93,7 +100,7 @@
                 <div class="wrap-progress" style="width:100%">
                   <div class="progress-intern" style="width:100%"></div>
                 </div>
-                <button class="btn-primary">Lihat Sertifikat</button>
+                <v-btn class="btn-primary">Lihat Sertifikat</v-btn>
               </div>
               <div class="percentage-intern">
                 100%
@@ -107,8 +114,11 @@
 </template>
 <style scoped>
 .title-page h1 {
-  padding: 12px;
+  margin-left: 12px;
+  padding: 0px 12px;
   font-weight: 900;
+  background-color: #23573f;
+  color: #fff;
 }
 .green-bg {
   background-color: #c1f5e4;
