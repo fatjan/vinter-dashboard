@@ -14,7 +14,7 @@
                 >Sign In</v-btn
               >
             </nuxt-link>
-            <nuxt-link to="/signup">
+            <nuxt-link to="/register">
               <v-btn id="btnSignUp" class="btn btn-primary btn-register"
                 >Sign Up</v-btn
               >
