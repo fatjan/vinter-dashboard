@@ -1,14 +1,17 @@
 <template>
   <v-app>
-    <v-row align="center">
-      <v-col cols="12" xs="12" sm="12" md="5" lg="5" xl="5"
-        ><v-card>
-          <v-toolbar dark color="indigo darken-4">
-            <v-spacer></v-spacer>
-            <div id="title_sign_up" class="title">Registrasi di Vinter</div>
-            <v-spacer></v-spacer>
-          </v-toolbar>
-          <v-card-text>
+    <v-row>
+      <v-col cols="12" xs="12" sm="12" md="5" lg="5" xl="5">
+        <v-row>
+          <img class="logo-header" src="~/assets/img/logo_color.png" />
+        </v-row>
+        <v-row align="center">
+          <v-card-text class="align-center form-register">
+            <h1>
+              Daftarkan <br />
+              Diri Kamu
+            </h1>
+
             <v-form ref="form" @submit="regist">
               <v-text-field
                 id="name"
@@ -49,41 +52,21 @@
               <p id="formErrorPar" v-if="formError" class="error--text">
                 <i id="formError">{{ formError }}</i>
               </p>
-              <v-btn
-                id="btnRegister"
-                dark
-                block
-                color="indigo darken-4"
-                type="submit"
-                >Sign Up</v-btn
-              >
+              <v-btn id="btnRegister" dark block type="submit">Sign Up</v-btn>
             </v-form>
           </v-card-text>
-        </v-card></v-col
+        </v-row>
+      </v-col>
+      <v-col
+        cols="12"
+        xs="12"
+        sm="12"
+        md="7"
+        lg="7"
+        xl="7"
+        class="align-center right-side"
       >
-      <v-col cols="12" xs="12" sm="12" md="7" lg="7" xl="7">
-        <div
-          class="m-login-left float-lg-right d-lg-flex align-items-lg-center"
-        >
-          <div class="m-login-img text-center w-100">
-            <div id="lottieLogin" class="lottie-animation"></div>
-          </div>
-        </div>
-        <div
-          class="m-login-right float-lg-left d-lg-flex align-items-lg-center"
-        >
-          <a href="index.html" class="m-login-logo"
-            ><img src="assets/img/logo_navbar@2x.png" width="118" alt=""
-          /></a>
-          <div class="m-login-content text-center w-100">
-            <h1>Login with your <br />Alterra Email</h1>
-            <button class="btn btn-primary">
-              <img src="assets/img/google-plus@2x.png" alt="" width="21" />
-              Login with Email
-            </button>
-            <a href="" class="login-back">Back to Home</a>
-          </div>
-        </div>
+        <img src="~/assets/img/login-img.png" alt="" />
       </v-col>
     </v-row>
   </v-app>
@@ -92,6 +75,11 @@
 <script>
 import Swal from 'sweetalert2'
 export default {
+  head() {
+    return {
+      title: 'Register'
+    }
+  },
   data() {
     return {
       name: '',
@@ -111,8 +99,7 @@ export default {
         password: (value) => {
           const pattern = /^(?=.{5,10}$)(?=.*[a-zA-z])(?=.*[0-9]).*$/
           return (
-            pattern.test(value) ||
-            'Password perlu berisi 5-10 karakter dengan kombinasi huruf dan angka.'
+            pattern.test(value) || '5-10 karakter, kombinasi huruf dan angka.'
           )
         },
         isSame: (value) => {
@@ -155,71 +142,39 @@ export default {
 </script>
 
 <style>
-/* ---LOGIN--- */
-.m-login {
-  position: relative;
+.logo-header {
+  height: 60px;
+  margin: 10px 40px;
 }
-.m-login .m-login-left {
-  background-color: #f4f7fc;
-  text-align: center;
-  padding: 20px 0;
+.form-register {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
 }
-.m-login .m-login-left img {
-  max-width: 70%;
-  width: 560px;
-}
-.m-login .m-login-right {
-  position: relative;
-  padding-top: 100px;
-  padding-bottom: 50px;
-}
-.m-login .m-login-right .m-login-logo {
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  display: table;
-}
-.m-login .m-login-right .m-login-content h1 {
-  font-family: 'Muli', sans-serif;
-  font-weight: 800;
-  font-size: 35px;
-}
-.m-login .m-login-right .m-login-content .btn {
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-  border-radius: 20px;
-  width: 250px;
-  display: table;
-  margin: 20px auto;
-  font-size: 12px;
-  font-family: 'SFCompactDisplay-Bold', sans-serif;
-  padding: 10px;
-}
-.m-login .m-login-right .m-login-content .btn > img {
-  margin-right: 10px;
-}
-.m-login .m-login-right .m-login-content .login-back {
-  color: #f47522;
+.form-register .v-input__slot {
+  border: #f07875 2px solid;
+  box-shadow: none !important;
+  border-radius: 24px;
+  height: 36px;
   font-size: 14px;
-  text-decoration: underline;
 }
-@media (min-width: 992px) {
-  .m-login {
-    height: 100vh;
-    width: 100%;
-    text-align: center;
-  }
-  .m-login .m-login-left {
-    height: 100%;
-    width: 60%;
-    padding: 0;
-  }
-  .m-login .m-login-right {
-    height: 100%;
-    width: 40%;
-    padding: 0;
-  }
+.form-register h1 {
+  font-family: 'Muli', sans-serif;
+  font-weight: 900;
+  color: #23573e;
+  margin-bottom: 20px;
+}
+.form-register #btnRegister {
+  background-color: #f07875;
+  height: 48px;
+  border-radius: 24px;
+  box-shadow: none;
+}
+.right-side {
+  background-color: #c1f5e4;
+}
+.right-side img {
+  margin-top: 18%;
 }
 </style>
