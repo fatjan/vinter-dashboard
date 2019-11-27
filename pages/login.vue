@@ -68,54 +68,7 @@
   </v-app>
 </template>
 
-<script>
-import Swal from 'sweetalert2'
-export default {
-  data() {
-    return {
-      email: '',
-      password: '',
-      showPassword: false,
-      formError: null,
-      rules: {
-        required: (value) => !!value || 'Required.',
-        email: (value) => {
-          const pattern = /^([a-zA-Z0-9]+)([._-]??[a-zA-Z0-9]+)+@([a-zA-Z0-9]+)([.-]??[a-zA-Z0-9]+)+([.]{1}[a-zA-Z0-9]{1,3})$/
-          return pattern.test(value) || 'Invalid e-mail.'
-        }
-      }
-    }
-  },
-  methods: {
-    async login(e) {
-      e.preventDefault()
-      if (this.$refs.form.validate()) {
-        await this.$store
-          .dispatch('login/login', {
-            email: this.email,
-            password: this.password
-          })
-          .then(() => {
-            Swal.fire('Login berhasil. \n Selamat Datang di Vinter.')
-            this.formError = null
-            this.$router.push('/dashboard')
-          })
-          .catch((err) => {
-            this.formError = err
-          })
-      }
-    },
-    toRegister() {
-      this.$router.push('/register')
-    },
-    toHome() {
-      this.$router.push('/')
-    }
-  }
-}
-</script>
-
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700,800&display=swap');
 .right {
   background-color: #c1f5e4;
@@ -204,3 +157,51 @@ a:hover {
   }
 }
 </style>
+
+<script>
+import Swal from 'sweetalert2'
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      showPassword: false,
+      formError: null,
+      rules: {
+        required: (value) => !!value || 'Required.',
+        email: (value) => {
+          const pattern = /^([a-zA-Z0-9]+)([._-]??[a-zA-Z0-9]+)+@([a-zA-Z0-9]+)([.-]??[a-zA-Z0-9]+)+([.]{1}[a-zA-Z0-9]{1,3})$/
+          return pattern.test(value) || 'Invalid e-mail.'
+        }
+      }
+    }
+  },
+  methods: {
+    async login(e) {
+      e.preventDefault()
+      if (this.$refs.form.validate()) {
+        await this.$store
+          .dispatch('login/login', {
+            email: this.email,
+            password: this.password
+          })
+          .then(() => {
+            Swal.fire('Login berhasil. \n Selamat Datang di Vinter.')
+            this.formError = null
+            this.$router.push('/dashboard')
+          })
+          .catch((err) => {
+            console.log(err)
+            this.formError = 'email / password salah'
+          })
+      }
+    },
+    toRegister() {
+      this.$router.push('/register')
+    },
+    toHome() {
+      this.$router.push('/')
+    }
+  }
+}
+</script>

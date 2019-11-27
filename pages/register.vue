@@ -75,6 +75,44 @@
   </v-app>
 </template>
 
+<style scoped>
+.logo-header {
+  height: 60px;
+  margin: 10px 40px;
+}
+.form-register {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+}
+.form-register .v-input__slot {
+  border: #f07875 2px solid;
+  box-shadow: none !important;
+  border-radius: 24px;
+  height: 36px;
+  font-size: 14px;
+}
+.form-register h1 {
+  font-family: 'Muli', sans-serif;
+  font-weight: 900;
+  color: #23573e;
+  margin-bottom: 20px;
+}
+.form-register #btnRegister {
+  background-color: #f07875;
+  height: 48px;
+  border-radius: 24px;
+  box-shadow: none;
+}
+.right-side {
+  background-color: #c1f5e4;
+}
+.right-side img {
+  margin-top: 18%;
+}
+</style>
+
 <script>
 import Swal from 'sweetalert2'
 export default {
@@ -149,41 +187,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.logo-header {
-  height: 60px;
-  margin: 10px 40px;
-}
-.form-register {
-  width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 70px;
-}
-.form-register .v-input__slot {
-  border: #f07875 2px solid;
-  box-shadow: none !important;
-  border-radius: 24px;
-  height: 36px;
-  font-size: 14px;
-}
-.form-register h1 {
-  font-family: 'Muli', sans-serif;
-  font-weight: 900;
-  color: #23573e;
-  margin-bottom: 20px;
-}
-.form-register #btnRegister {
-  background-color: #f07875;
-  height: 48px;
-  border-radius: 24px;
-  box-shadow: none;
-}
-.right-side {
-  background-color: #c1f5e4;
-}
-.right-side img {
-  margin-top: 18%;
-}
-</style>
