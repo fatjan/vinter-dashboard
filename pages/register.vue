@@ -115,6 +115,7 @@
 
 <script>
 import Swal from 'sweetalert2'
+import { mapActions } from 'vuex'
 export default {
   head() {
     return {
@@ -138,9 +139,9 @@ export default {
           return pattern.test(value) || 'Min 4 characters'
         },
         password: (value) => {
-          const pattern = /^(?=.{5,10}$)(?=.*[a-zA-z])(?=.*[0-9]).*$/
+          const pattern = /^(?=.{6,10}$)(?=.*[a-zA-z])(?=.*[0-9]).*$/
           return (
-            pattern.test(value) || '5-10 karakter, kombinasi huruf dan angka.'
+            pattern.test(value) || '6-10 karakter, kombinasi huruf dan angka.'
           )
         },
         isSame: (value) => {
@@ -149,16 +150,34 @@ export default {
         email: (value) => {
           const pattern = /^([a-zA-Z0-9]+)([._-]??[a-zA-Z0-9]+)+@([a-zA-Z0-9]+)([.-]??[a-zA-Z0-9]+)+([.]{1}[a-zA-Z0-9]{1,3})$/
           return pattern.test(value) || 'Invalid e-mail.'
-        },
-        phoneNumber: (value) => {
-          const pattern = /^08[0-9]{9,13}$/
-          return pattern.test(value) || 'Invalid Phone Number.'
         }
       }
     }
   },
   computed: {},
   methods: {
+    ...mapActions({
+      login: 'login/login'
+    }),
+    hitLogin(email, password) {
+      const req = {
+        url: '/login/intern',
+        method: 'post',
+        data: {
+          email: this.email,
+          password: this.password
+        }
+      }
+      this.$axios(req)
+        .then(function(response) {
+          localStorage.setItem('token', response.data.result)
+          localStorage.setItem('userRole', response.data.claims.role)
+          localStorage.setItem('userId', response.data.claims.id)
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+    },
     async regist(e) {
       e.preventDefault()
       if (this.$refs.form.validate()) {
@@ -168,10 +187,11 @@ export default {
             email: this.email,
             password: this.password
           })
-          .then(() => {
+          .then(async () => {
             Swal.fire('Registrasi berhasil. Selamat Datang di Vinter.')
             this.formError = null
-            this.$router.push('/')
+            await this.hitLogin(this.email, this.password)
+            await this.$router.push('/dashboard')
           })
           .catch((err) => {
             this.formError = err

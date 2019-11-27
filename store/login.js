@@ -24,6 +24,7 @@ export const actions = {
     }
   },
   login({ commit, state }, { email, password }) {
+    console.log('ini email n pass', email, password)
     return new Promise((resolve, reject) => {
       this.$axios
         .$post('login/intern', {
@@ -37,6 +38,11 @@ export const actions = {
             commit('setState', { userName: res.claims.name })
             commit('setState', { userEmail: res.claims.email })
             commit('setState', { userRole: res.claims.role })
+            localStorage.setItem('name', res.claims.name)
+            localStorage.setItem('email', res.claims.email)
+            localStorage.setItem('userRole', res.claims.role)
+            localStorage.setItem('userId', res.claims.id)
+            localStorage.setItem('is_login', true)
             resolve('success')
           }
         })
@@ -54,6 +60,11 @@ export const actions = {
     commit('setState', { userEmail: null })
     commit('setState', { userName: null })
     commit('setState', { userRole: null })
+    localStorage.setItem('name', '')
+    localStorage.setItem('email', '')
+    localStorage.setItem('userRole', '')
+    localStorage.setItem('userId', '')
+    localStorage.setItem('is_login', false)
     this.$router.push('/')
   }
 }
