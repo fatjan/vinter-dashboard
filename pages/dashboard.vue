@@ -1,6 +1,15 @@
 <template>
   <div id="dashboardPage" class="page">
-    <v-container>
+    <v-container v-if="isLoading" class="align-center">
+      <v-progress-circular
+        :size="70"
+        :width="7"
+        color="#23573E"
+        indeterminate
+        style="margin-top:150px;"
+      ></v-progress-circular>
+    </v-container>
+    <v-container v-else>
       <v-row class="title-page">
         <h1>Dashboard</h1>
       </v-row>
@@ -189,6 +198,23 @@ export default {
     return {
       title: 'Dashboard'
     }
+  },
+  data() {
+    return {
+      isLoading: true,
+      name: '',
+      email: ''
+    }
+  },
+  created() {
+    const isLogin = localStorage.getItem('is_login')
+    if (!isLogin) {
+      this.$router.push('/')
+    }
+  },
+  mounted() {
+    const data = localStorage.getItem('token')
+    console.warn(data)
   }
 }
 </script>
