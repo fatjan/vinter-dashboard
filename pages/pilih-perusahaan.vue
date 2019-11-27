@@ -18,7 +18,7 @@
     </v-row>
     <v-row class="rata-kiri">
       <v-col
-        v-for="(items, i) in items"
+        v-for="(item, i) in items"
         :key="i"
         cols="12"
         xs="12"

@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+
 export const state = () => ({
   token: '',
   userName: '',
@@ -30,6 +32,7 @@ export const actions = {
         })
         .then((res) => {
           if (res.status === 'success') {
+            Swal.fire('Masokkkk')
             commit('setState', { token: res.result })
             commit('setState', { userName: res.claims.name })
             commit('setState', { userEmail: res.claims.email })
@@ -41,7 +44,7 @@ export const actions = {
           if (err.response === undefined) {
             reject(new Error('Something wrong'))
           } else {
-            reject(err.response.data.message.body)
+            reject(err.response.data)
           }
         })
     })
