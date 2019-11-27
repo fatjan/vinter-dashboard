@@ -51,12 +51,57 @@
               <v-card class="kotak-perusahaan">
                 <div class="gambar align-center vmiddle">
                   <img
-                    src="~/assets/img/logo_navbar@2x.png"
+                    src="~/assets/img/adobe-illustrator.png"
                     alt=""
                     class="inside-pic"
                   />
+                  <h4>
+                    Graphic
+                  </h4>
+                  <h4>
+                    Designer
+                  </h4>
                 </div>
               </v-card>
+              <center>
+                <v-btn id="btnLihatTugas" dark>Lihat Tugas</v-btn>
+              </center>
+            </v-col>
+            <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4">
+              <v-card class="kotak-perusahaan">
+                <div class="gambar align-center vmiddle">
+                  <img src="~/assets/img/ux.png" alt="" class="inside-pic" />
+                  <h4>
+                    UI/UX
+                  </h4>
+                  <h4>
+                    Designer
+                  </h4>
+                </div>
+              </v-card>
+              <center>
+                <v-btn id="btnLihatTugas" dark>Lihat Tugas</v-btn>
+              </center>
+            </v-col>
+            <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4">
+              <v-card class="kotak-perusahaan">
+                <div class="gambar align-center vmiddle">
+                  <img
+                    src="~/assets/img/web-design.png"
+                    alt=""
+                    class="inside-pic"
+                  />
+                  <h4>
+                    Web
+                  </h4>
+                  <h4>
+                    Designer
+                  </h4>
+                </div>
+              </v-card>
+              <center>
+                <v-btn id="btnLihatTugas" dark>Lihat Tugas</v-btn>
+              </center>
             </v-col>
           </v-row>
         </v-col>
@@ -69,7 +114,7 @@ export default {
   layout: 'OtherPageLayout'
 }
 </script>
-<style>
+<style scoped>
 .banner {
   background-color: #c1f5e4;
   margin-top: 65px;
@@ -96,5 +141,32 @@ p {
 }
 .mini-img {
   margin-right: 10px;
+}
+
+.kotak-perusahaan {
+  border: 3px solid #23573e !important;
+  background-color: #d5f8ed !important;
+  margin-bottom: 20px;
+  /* border-radius: 10% !important; */
+}
+.gambar {
+  background-color: white;
+  /* border: 3px solid #23573e; */
+  /* padding: 0px; */
+  /* margin: 0px; */
+  width: 100%;
+  height: 270px;
+}
+.inside-pic {
+  margin-top: 60px;
+  margin-bottom: 10px;
+}
+
+#btnLihatTugas {
+  background-color: #f07875;
+  height: 43px;
+  border-radius: 24px;
+  box-shadow: none;
+  width: 230px;
 }
 </style>
