@@ -9,6 +9,11 @@
             <h4>Designer</h4>
           </div>
         </v-card>
+        <v-row @click="toPositionPage" class="vmiddle align-right" dark>
+          <strong>
+            <v-icon>mdi-page-first</v-icon>Kembali ke Pilih Posisi
+          </strong>
+        </v-row>
       </v-col>
       <v-col cols="12" xs="12" sm="12" md="9" lg="9" xl="9">
         <v-row>
@@ -16,7 +21,11 @@
             <h1>UI/UX Designer</h1>
           </v-col>
           <v-col cols="3">
-            <v-btn id="btnDaftarMagang" class="vmiddle align-right" dark
+            <v-btn
+              id="btnDaftarMagang"
+              @click="daftarMagang"
+              class="vmiddle align-right"
+              dark
               >Daftar Magang</v-btn
             >
           </v-col>
@@ -37,7 +46,11 @@
             </v-col>
             <v-col cols="3">
               <center>
-                <v-btn id="btnLihatMateri" class="vmiddle align-center" dark
+                <v-btn
+                  id="btnLihatMateri"
+                  @click="lihatMateri"
+                  class="vmiddle align-center"
+                  dark
                   >Lihat Materi</v-btn
                 >
               </center>
@@ -142,12 +155,19 @@ export default {
     async getTask() {
       const getAllTasks = await this.$store.dispatch('daftarTugas/getAllTask')
       await this.$store.dispatch('daftarTugas/setAllTask', getAllTasks)
-    }
+    },
     // seeTask(item) {
     //   this.setState({ position: item })
     //   console.log('itemposition', item)
     //   this.$router.push('/daftar-tugas')
     // }
+    toPositionPage() {
+      this.$router.push('/pilih-posisi')
+    },
+    lihatMateri() {
+      this.$router.push('/taskdetail')
+    },
+    daftarMagang() {}
   }
 }
 </script>
