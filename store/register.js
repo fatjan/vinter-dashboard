@@ -16,6 +16,9 @@ export const actions = {
         })
         .then((res) => {
           if (res.status === 'success') {
+            localStorage.setItem('name', res.result.name)
+            localStorage.setItem('email', res.result.email)
+            localStorage.setItem('is_login', true)
             resolve()
           }
         })
