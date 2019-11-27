@@ -26,7 +26,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['~/assets/style/universal.css', '~/assets/style/bootstrap.min.css'],
+  css: ['~/assets/style/bootstrap.min.css', '~/assets/style/universal.css'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -59,7 +59,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
