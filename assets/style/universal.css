@@ -683,20 +683,23 @@ dl {
 
 
 /*--- end Vertical Align ---*/
+
+
 /*--- pages ---*/
+
 .page {
     min-height:63vh;
     margin-top:80px;
     font-family: 'Muli', sans-serif !important;
 }
 
+
 /* sweet Alert  */
 
-.swal-button {
-    padding: 7px 19px;
-    border-radius: 2px;
-    background-color: #4962b3;
-    font-size: 12px;
-    border: 1px solid #3e549a;
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+.swal2-confirm.swal2-styled {
+    color: white;
+    background-color: #ff7a76 !important;
+    font-family: 'Muli', sans-serif;
+    border-color: #ff7a76;
+    border-radius: 30px !important;
 }

@@ -9,22 +9,24 @@
         </v-flex>
         <v-flex lg6 md6 sm6 class="align-right header-menu">
           <a href="#" class="nav-list">Our Partner</a>
-          <a href="/signin">
-            <v-btn id="btnSignIn" class="btn btn-secondary btn-login"
-              >Sign In</v-btn
-            >
-          </a>
-          <a href="/signup">
-            <v-btn id="btnSignUp" class="btn btn-primary btn-register"
-              >Sign Up</v-btn
-            >
-          </a>
+          <v-btn
+            id="btnSignIn"
+            @click="toLogin"
+            class="btn btn-secondary btn-login"
+            >Sign In</v-btn
+          >
+          <v-btn
+            id="btnSignUp"
+            class="btn btn-primary btn-register"
+            @click="toRegister"
+            >Sign Up</v-btn
+          >
         </v-flex>
       </v-layout>
     </v-container>
   </v-layout>
 </template>
-<style>
+<style scoped>
 .header-home {
   background-color: #c1f5e4;
 }
@@ -58,3 +60,15 @@
   font-family: 'Muli', sans-serif;
 }
 </style>
+<script>
+export default {
+  methods: {
+    toLogin() {
+      this.$router.push('/login')
+    },
+    toRegister() {
+      this.$router.push('/register')
+    }
+  }
+}
+</script>

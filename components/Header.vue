@@ -12,13 +12,33 @@
           <a href="#" class="nav-list">Dashboard</a>
           <a href="#" class="nav-list">Akun</a>
           <a href="#">
-            <v-btn id="btnSignOut" class="btn btn-primary">Keluar</v-btn>
+            <v-btn id="btnSignOut" @click="logout" class="btn btn-primary"
+              >Keluar</v-btn
+            >
           </a>
         </v-flex>
       </v-layout>
     </v-container>
   </v-row>
 </template>
+<script>
+import Swal from 'sweetalert2'
+export default {
+  methods: {
+    async logout() {
+      await this.$store
+        .dispatch('login/logout')
+        .then(() => {
+          Swal.fire('Terima kasih sudah menggunakan Vinter.')
+          this.$router.push('/')
+        })
+        .catch((err) => {
+          this.formError = err
+        })
+    }
+  }
+}
+</script>
 <style scoped>
 .header {
   position: fixed;
