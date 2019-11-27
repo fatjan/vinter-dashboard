@@ -27,7 +27,7 @@
         lg="3"
         xl="3"
       >
-        <v-card @click="chooseCompany(item.id)" class="kotak-perusahaan">
+        <v-card @click="chooseCompany(item)" class="kotak-perusahaan">
           <div class="gambar align-center vmiddle">
             <img
               v-bind:src="item.image"
@@ -92,7 +92,7 @@
 }
 </style>
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 export default {
   layout: 'OtherPageLayout',
   data() {
@@ -108,6 +108,9 @@ export default {
     this.getCompany()
   },
   methods: {
+    ...mapActions({
+      getCompanyById: 'pilihPerusahaan/getCompanyById'
+    }),
     ...mapMutations({ setState: 'pilihPerusahaan/setState' }),
     async getCompany() {
       const getAllCompanies = await this.$store.dispatch(
@@ -118,8 +121,9 @@ export default {
         getAllCompanies
       )
     },
-    chooseCompany(id) {
-      this.setState({ companyId: id })
+    chooseCompany(companyItem) {
+      this.setState({ companyId: companyItem.id })
+      this.setState({ company: companyItem })
       this.$router.push('/pilih-posisi')
     }
   }

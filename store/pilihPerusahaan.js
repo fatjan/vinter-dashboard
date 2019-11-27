@@ -17,11 +17,10 @@ export const actions = {
       listCompany: outcome.result
     })
   },
-  setChosenCompany({ commit, state }, outcome) {
+  setChosenCompany({ commit }, outcome) {
     commit('setState', {
       company: outcome.result
     })
-    console.log('ini comp', state.company)
   },
   getAllCompany() {
     const token = localStorage.getItem('token')
@@ -35,13 +34,10 @@ export const actions = {
     const token = localStorage.getItem('token')
     this.$axios.setToken(token, 'Bearer')
     this.$axios.setHeader('Content-Type', 'application/json', ['get'])
-    return this.$axios
-      .$get('company?id=' + state.companyId)
-      .then((Response) => {})
-      .catch((error) => {
-        if (error.response.status === 404) {
-          console.log('aaaa')
-        }
-      })
+    return this.$axios.$get('company?id=' + state.companyId).catch((error) => {
+      if (error.response.status === 404) {
+        console.log('aaaa')
+      }
+    })
   }
 }

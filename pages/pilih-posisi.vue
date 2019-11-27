@@ -6,13 +6,11 @@
           <v-col cols="12" xs="12" sm="12" md="11" lg="11" xl="11">
             <h2>
               <strong>
-                BukaToko
+                {{ company.name }}
               </strong>
             </h2>
             <p>
-              BukaToko adalah startup e-commerce pertama di Bojonegoro. Start-up
-              ini membantu IKM di Bojonegoro memasarkan produk mereka.
-              {{ company }}
+              {{ company.description }}
             </p>
           </v-col>
           <v-col cols="12" xs="12" sm="12" md="1" lg="1" xl="1">
@@ -179,14 +177,14 @@ export default {
       positionId: (state) => state.pilihPerusahaan.positionId
     })
   },
-  mounted() {
-    this.getCompanyById()
-  },
+  // mounted() {
+  //   this.getPosition()
+  // },
   methods: {
     ...mapActions({
       getCompanyById: 'pilihPerusahaan/getCompanyById'
     }),
-    ...mapMutations({ setState: 'pilihPosisi/setState' }),
+    ...mapMutations({ setState: 'pilihPerusahaan/setState' }),
     async getPositionById() {
       const getAllCompanies = await this.$store.dispatch(
         'pilihPerusahaan/getAllCompany'
@@ -196,16 +194,9 @@ export default {
         getAllCompanies
       )
     },
-    chooseCompany(id) {
+    choosePosition(id) {
       this.setState({ companyId: id })
       this.$router.push('/pilih-posisi')
-    },
-    async getCompany() {
-      const getSelectedCompany = await this.getCompanyById
-      await this.$store.dispatch(
-        'pilihPerusahaan/setChosenCompany',
-        getSelectedCompany
-      )
     }
   }
 }
