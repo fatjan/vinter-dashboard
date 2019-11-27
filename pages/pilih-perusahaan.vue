@@ -99,10 +99,10 @@ export default {
   /* padding: 0px; */
   /* margin: 0px; */
   width: 100%;
-  height: 300px;
+  height: 270px;
 }
 .inside-pic {
-  margin-top: 70px;
+  margin-top: 60px;
 }
 .text {
   margin: 10px;
