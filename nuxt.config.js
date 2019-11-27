@@ -2,6 +2,9 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   mode: 'spa',
+  env: {
+    VINTER_API_URL: process.env.VINTER_API_URL
+  },
   /*
    ** Headers of the page
    */
@@ -26,7 +29,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['~/assets/style/universal.css', '~/assets/style/bootstrap.min.css'],
+  css: ['~/assets/style/bootstrap.min.css', '~/assets/style/universal.css'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -45,13 +48,21 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    [
+      'nuxt-sweetalert2',
+      {
+        confirmButtonColor: '#FFFFFF'
+      }
+    ]
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: process.env.BASE_URL || 'http://18.136.69.227'
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module

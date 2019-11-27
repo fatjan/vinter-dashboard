@@ -20,6 +20,7 @@ a:hover {
     outline: none;
 }
 
+
 /* position */
 
 .fullbody {
@@ -66,7 +67,9 @@ a:hover {
     margin: auto !important;
 }
 
+
 /* end position */
+
 
 /* width */
 
@@ -86,7 +89,9 @@ a:hover {
     width: 100%;
 }
 
+
 /* end width */
+
 
 /* display */
 
@@ -106,7 +111,9 @@ a:hover {
     display: none !important;
 }
 
+
 /* end display */
+
 
 /*--- global padding ---*/
 
@@ -130,6 +137,7 @@ a:hover {
     padding: 25px !important;
 }
 
+
 /*--- padding left ---*/
 
 .pl0 {
@@ -152,6 +160,7 @@ a:hover {
     padding-left: 25px !important;
 }
 
+
 /*--- padding right ---*/
 
 .pr0 {
@@ -173,6 +182,7 @@ a:hover {
 .pr25 {
     padding-right: 25px !important;
 }
+
 
 /*--- padding top ---*/
 
@@ -200,6 +210,7 @@ a:hover {
     padding-top: 25px !important;
 }
 
+
 /*--- padding bottom ---*/
 
 .pb0 {
@@ -222,7 +233,9 @@ a:hover {
     padding-bottom: 25px !important;
 }
 
+
 /*--- end padding ---*/
+
 
 /*--- global margin ---*/
 
@@ -249,6 +262,7 @@ a:hover {
 .m25 {
     margin: 25px !important;
 }
+
 
 /*--- margin left ---*/
 
@@ -288,6 +302,7 @@ a:hover {
     margin-left: 40px !important;
 }
 
+
 /*--- margin right ---*/
 
 .mr-auto {
@@ -313,6 +328,7 @@ a:hover {
 .mr25 {
     margin-right: 25px !important;
 }
+
 
 /*--- margin top ---*/
 
@@ -384,6 +400,7 @@ a:hover {
     margin-top: 200px !important;
 }
 
+
 /*--- margin bottom ---*/
 
 .mb0 {
@@ -405,6 +422,7 @@ a:hover {
 .mb15 {
     margin-bottom: 15px !important;
 }
+
 .mb20 {
     margin-bottom: 20px !important;
 }
@@ -449,7 +467,9 @@ a:hover {
     margin-bottom: 180px !important;
 }
 
+
 /*--- end margin ---*/
+
 
 /*--- rounded ---*/
 
@@ -477,7 +497,9 @@ a:hover {
     -o-border-radius: 50% 50% 50% 50%;
 }
 
+
 /*--- end rounded ---*/
+
 
 /*--- font-weight ---*/
 
@@ -497,7 +519,9 @@ a:hover {
     font-weight: 700 !important;
 }
 
+
 /*--- end font-weight ---*/
+
 
 /*--- font-size ---*/
 
@@ -545,7 +569,9 @@ a:hover {
     font-size: 30px !important;
 }
 
+
 /*--- end font-size ---*/
+
 
 /*--- line height ---*/
 
@@ -561,7 +587,9 @@ a:hover {
     line-height: 2 !important;
 }
 
+
 /*--- end line height ---*/
+
 
 /*--- height ---*/
 
@@ -585,7 +613,9 @@ a:hover {
     height: 20px !important;
 }
 
+
 /*--- end height ---*/
+
 
 /*--- float ---*/
 
@@ -601,7 +631,9 @@ a:hover {
     float: none !important;
 }
 
+
 /*--- end float ---*/
+
 
 /*--- text-align ---*/
 
@@ -617,7 +649,9 @@ a:hover {
     text-align: center !important;
 }
 
+
 /*--- end text-align ---*/
+
 
 /*--- list ---*/
 
@@ -629,7 +663,9 @@ dl {
     list-style: none;
 }
 
+
 /*--- end list ---*/
+
 
 /*--- Vertical Align ---*/
 
@@ -645,4 +681,21 @@ dl {
     vertical-align: bottom !important;
 }
 
+
 /*--- end Vertical Align ---*/
+/*--- pages ---*/
+.page {
+    min-height:63vh;
+    margin-top:80px;
+}
+
+/* sweet Alert  */
+
+.swal-button {
+    padding: 7px 19px;
+    border-radius: 2px;
+    background-color: #4962b3;
+    font-size: 12px;
+    border: 1px solid #3e549a;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
