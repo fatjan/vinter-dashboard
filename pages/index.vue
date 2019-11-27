@@ -56,13 +56,6 @@
   font-weight: 900;
   margin-bottom: 0px;
 }
-.header {
-  background-color: #c1f5e4;
-  padding: 15px 0px;
-}
-.header .logo-header {
-  height: 50px;
-}
 .section {
   padding: 40px 0;
 }

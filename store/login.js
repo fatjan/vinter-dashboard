@@ -34,10 +34,7 @@ export const actions = {
         .then((res) => {
           if (res.status === 'success') {
             Swal.fire('Masokkkk')
-            commit('setState', { token: res.result })
-            commit('setState', { userName: res.claims.name })
-            commit('setState', { userEmail: res.claims.email })
-            commit('setState', { userRole: res.claims.role })
+            localStorage.setItem('token', res.result)
             localStorage.setItem('name', res.claims.name)
             localStorage.setItem('email', res.claims.email)
             localStorage.setItem('userRole', res.claims.role)
@@ -61,6 +58,7 @@ export const actions = {
     commit('setState', { userName: null })
     commit('setState', { userRole: null })
     localStorage.setItem('name', '')
+    localStorage.setItem('token', '')
     localStorage.setItem('email', '')
     localStorage.setItem('userRole', '')
     localStorage.setItem('userId', '')
