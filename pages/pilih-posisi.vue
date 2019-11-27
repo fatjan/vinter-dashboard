@@ -46,55 +46,27 @@
             Posisi Tersedia
           </h4>
           <v-row>
-            <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4">
+            <v-col
+              v-for="item in listPosition"
+              :key="item.id"
+              cols="12"
+              xs="12"
+              sm="12"
+              md="4"
+              lg="4"
+              xl="4"
+            >
               <v-card class="kotak-perusahaan">
                 <div class="gambar align-center vmiddle">
-                  <img
-                    src="~/assets/img/adobe-illustrator.png"
-                    alt=""
-                    class="inside-pic"
-                  />
+                  <img v-bind:src="item.image" alt="" class="inside-pic" />
                   <h4>
-                    Graphic
+                    {{ item.name }}
                   </h4>
-                  <h4>
-                    Designer
+                  <h4 style="font-size: 13px;">
+                    {{ item.description }}
                   </h4>
-                </div>
-              </v-card>
-              <center>
-                <v-btn id="btnLihatTugas" dark>Lihat Tugas</v-btn>
-              </center>
-            </v-col>
-            <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4">
-              <v-card class="kotak-perusahaan">
-                <div class="gambar align-center vmiddle">
-                  <img src="~/assets/img/ux.png" alt="" class="inside-pic" />
-                  <h4>
-                    UI/UX
-                  </h4>
-                  <h4>
-                    Designer
-                  </h4>
-                </div>
-              </v-card>
-              <center>
-                <v-btn id="btnLihatTugas" dark>Lihat Tugas</v-btn>
-              </center>
-            </v-col>
-            <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4">
-              <v-card class="kotak-perusahaan">
-                <div class="gambar align-center vmiddle">
-                  <img
-                    src="~/assets/img/web-design.png"
-                    alt=""
-                    class="inside-pic"
-                  />
-                  <h4>
-                    Web
-                  </h4>
-                  <h4>
-                    Designer
+                  <h4 style="font-size: 13px;">
+                    Nilai min. kelulusan: {{ item.certificate_trigger_score }}
                   </h4>
                 </div>
               </v-card>
@@ -153,7 +125,8 @@ p {
   height: 270px;
 }
 .inside-pic {
-  margin-top: 60px;
+  height: 47%;
+  margin-top: 15px;
   margin-bottom: 10px;
 }
 
@@ -177,26 +150,23 @@ export default {
       positionId: (state) => state.pilihPerusahaan.positionId
     })
   },
-  // mounted() {
-  //   this.getPosition()
-  // },
+  mounted() {
+    this.getPosition()
+  },
   methods: {
     ...mapActions({
       getCompanyById: 'pilihPerusahaan/getCompanyById'
     }),
     ...mapMutations({ setState: 'pilihPerusahaan/setState' }),
-    async getPositionById() {
-      const getAllCompanies = await this.$store.dispatch(
-        'pilihPerusahaan/getAllCompany'
+    async getPosition() {
+      const getAllPositions = await this.$store.dispatch(
+        'pilihPosisi/getAllPosition'
       )
-      await this.$store.dispatch(
-        'pilihPerusahaan/setAllCompany',
-        getAllCompanies
-      )
+      await this.$store.dispatch('pilihPosisi/setAllPosition', getAllPositions)
     },
     choosePosition(id) {
       this.setState({ companyId: id })
-      this.$router.push('/pilih-posisi')
+      this.$router.push('/pilih-task')
     }
   }
 }

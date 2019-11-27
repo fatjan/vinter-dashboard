@@ -13,14 +13,14 @@ export const mutations = {
 export const actions = {
   setAllPosition({ commit }, outcome) {
     commit('setState', {
-      listPosition: outcome.result
+      listPosition: outcome.result.data
     })
   },
   getAllPosition() {
     const token = localStorage.getItem('token')
     this.$axios.setToken(token, 'Bearer')
     this.$axios.setHeader('Content-Type', 'application/json', ['get'])
-    return this.$axios.$get('company/list').catch((err) => {
+    return this.$axios.$get('position/listfull').catch((err) => {
       console.log(err.response)
     })
   },
