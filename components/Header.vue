@@ -8,9 +8,10 @@
           </a>
         </v-flex>
         <v-flex lg6 md6 sm6 class="align-right header-menu">
+          <a href="#" class="nav-list">Daftar Perusahaan</a>
           <a href="#" class="nav-list">Dashboard</a>
-          <a href="/pilih-perusahaan" class="nav-list">Pilih Perusahaan</a>
-          <a href="/dashboard">
+          <a href="#" class="nav-list">Akun</a>
+          <a href="#">
             <v-btn id="btnSignOut" @click="logout" class="btn btn-primary"
               >Keluar</v-btn
             >

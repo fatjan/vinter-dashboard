@@ -1,5 +1,5 @@
 <template>
-  <div id="homePage" class="page">
+  <div id="homePage">
     <div class="section home-section">
       <v-container>
         <v-layout row wrap>
