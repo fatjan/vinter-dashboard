@@ -1,5 +1,9 @@
 <template>
-  <div id="dashboardPage" class="page">
+  <div
+    id="dashboardPage"
+    class="page"
+    style="min-height:63vh; margin-top:80px;"
+  >
     <v-layout row wrap>
       <h1>Dashboard</h1>
     </v-layout>
@@ -40,6 +44,6 @@
 </template>
 <script>
 export default {
-  layout: 'OtherPage'
+  layout: 'OtherPageLayout'
 }
 </script>
