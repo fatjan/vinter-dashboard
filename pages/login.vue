@@ -69,7 +69,7 @@ export default {
     return {
       email: '',
       password: '',
-      showsPassword: false
+      showPassword: false
     }
   },
   methods: {
@@ -82,9 +82,9 @@ export default {
             password: this.password
           })
           .then(() => {
-            Swal.fire('Login berhasil. Selamat Datang di Vinter.')
+            Swal.fire('Login berhasil. \n Selamat Datang di Vinter.')
             this.formError = null
-            this.$router.push('/')
+            this.$router.push('/dashboard')
           })
           .catch((err) => {
             this.formError = err
@@ -95,7 +95,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700,800&display=swap');
 .right {
   background-color: #c1f5e4;

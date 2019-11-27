@@ -9,12 +9,12 @@
         </v-flex>
         <v-flex lg6 md6 sm6 class="align-right header-menu">
           <a href="#" class="nav-list">Our Partner</a>
-          <a href="/signin">
+          <a href="/login">
             <v-btn id="btnSignIn" class="btn btn-secondary btn-login"
               >Sign In</v-btn
             >
           </a>
-          <a href="/signup">
+          <a href="/register">
             <v-btn id="btnSignUp" class="btn btn-primary btn-register"
               >Sign Up</v-btn
             >
