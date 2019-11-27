@@ -57,6 +57,7 @@ export const actions = {
     commit('setState', { userEmail: null })
     commit('setState', { userName: null })
     commit('setState', { userRole: null })
+    localStorage.setItem('token', '')
     localStorage.setItem('name', '')
     localStorage.setItem('token', '')
     localStorage.setItem('email', '')
