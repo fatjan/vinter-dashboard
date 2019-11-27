@@ -8,7 +8,8 @@
           </a>
         </v-flex>
         <v-row>
-          <v-col cols="12" class="align-center separator">
+          <v-card-text class="align-center form-register">
+            <!-- <v-col cols="12" class="align-center separator"> -->
             <h2>
               <strong>
                 Masuk dengan
@@ -19,26 +20,28 @@
                 Email Kamu
               </strong>
             </h2>
-            <v-form ref="form" @submit="login" action class="header-form">
-              <div class="input-group">
-                <input
-                  v-model="email"
-                  type="email"
-                  class="form-control"
-                  placeholder="Email"
-                  aria-label="Email"
-                />
-              </div>
-              <div class="input-group">
-                <input
-                  v-model="password"
-                  :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
-                  :type="showPassword ? 'text' : 'password'"
-                  class="form-control"
-                  placeholder="Password"
-                  aria-label="Password"
-                />
-              </div>
+            <v-form ref="form" @submit="login">
+              <v-text-field
+                v-model="email"
+                :rules="[rules.required, rules.email]"
+                type="email"
+                placeholder="Email"
+                aria-label="Email"
+                solo
+              ></v-text-field>
+              <v-text-field
+                v-model="password"
+                :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
+                :type="showPassword ? 'text' : 'password'"
+                :rules="[rules.required]"
+                @click:append="showPassword = !showPassword"
+                placeholder="Password"
+                aria-label="Password"
+                solo
+              ></v-text-field>
+              <p id="formErrorPar" v-if="formError" class="error--text">
+                <i id="formError">{{ formError }}</i>
+              </p>
               <strong>
                 <v-btn
                   id="btnSignUp"
@@ -50,10 +53,13 @@
               </strong>
             </v-form>
             <div class="bottom-text">
-              <p>Belum punya akun? <a href="">Sign Up Di sini</a></p>
-              <a href="/">Back to Home</a>
+              <p>
+                Belum punya akun? <a @click="toRegister">Sign Up Di sini</a>
+              </p>
+              <a @click="toHome">Back to Home</a>
             </div>
-          </v-col>
+            <!-- </v-col> -->
+          </v-card-text>
         </v-row>
       </v-col>
       <v-col cols="12" xs="12" sm="12" md="7" lg="7" xl="7" class="right">
@@ -69,7 +75,15 @@ export default {
     return {
       email: '',
       password: '',
-      showPassword: false
+      showPassword: false,
+      formError: null,
+      rules: {
+        required: (value) => !!value || 'Required.',
+        email: (value) => {
+          const pattern = /^([a-zA-Z0-9]+)([._-]??[a-zA-Z0-9]+)+@([a-zA-Z0-9]+)([.-]??[a-zA-Z0-9]+)+([.]{1}[a-zA-Z0-9]{1,3})$/
+          return pattern.test(value) || 'Invalid e-mail.'
+        }
+      }
     }
   },
   methods: {
@@ -90,12 +104,18 @@ export default {
             this.formError = err
           })
       }
+    },
+    toRegister() {
+      this.$router.push('/register')
+    },
+    toHome() {
+      this.$router.push('/')
     }
   }
 }
 </script>
 
-<style scoped>
+<style>
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700,800&display=swap');
 .right {
   background-color: #c1f5e4;
@@ -112,13 +132,30 @@ h2 {
   font-family: 'Muli', sans-serif;
   font-weight: 800;
 }
-.form-control {
-  border-color: #ff7a76;
-  border-radius: 20px;
-  margin: 25px 120px 0px 120px;
-  padding-left: 20px;
+.form-login {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+}
+.form-login .v-input__slot {
+  border: #f07875 2px solid;
+  box-shadow: none !important;
+  border-radius: 24px;
+  height: 36px;
   font-size: 14px;
-  font-family: 'SFCompactDisplay-Regular', sans-serif;
+}
+.form-login h1 {
+  font-family: 'Muli', sans-serif;
+  font-weight: 900;
+  color: #23573e;
+  margin-bottom: 20px;
+}
+.form-login #btnSignUp {
+  background-color: #f07875;
+  height: 48px;
+  border-radius: 24px;
+  box-shadow: none;
 }
 .btn:hover {
   box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.1);
@@ -162,7 +199,7 @@ a:hover {
 }
 
 @media (max-width: 812px) {
-  .form-control {
+  .form-login {
     margin: 25px 10px 0px 10px;
   }
 }

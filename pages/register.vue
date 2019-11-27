@@ -11,7 +11,6 @@
               Daftarkan <br />
               Diri Kamu
             </h1>
-
             <v-form ref="form" @submit="regist">
               <v-text-field
                 id="name"
@@ -54,6 +53,10 @@
               </p>
               <v-btn id="btnRegister" dark block type="submit">Sign Up</v-btn>
             </v-form>
+            <div class="bottom-text">
+              <p>Sudah punya akun? <a @click="toLogin">Sign In Di sini</a></p>
+              <a @click="toHome">Back to Home</a>
+            </div>
           </v-card-text>
         </v-row>
       </v-col>
@@ -136,6 +139,12 @@ export default {
             this.formError = err
           })
       }
+    },
+    toLogin() {
+      this.$router.push('/login')
+    },
+    toHome() {
+      this.$router.push('/')
     }
   }
 }
