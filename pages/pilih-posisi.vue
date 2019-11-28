@@ -173,6 +173,7 @@ export default {
       localStorage.setItem('positionId', item.id)
       localStorage.setItem('positionName', item.name)
       localStorage.setItem('positionDesc', item.description)
+      localStorage.setItem('positionImg', item.image)
       console.log('itemposition', this.position)
       this.$router.push('/daftar-tugas')
     }
