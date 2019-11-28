@@ -5,17 +5,12 @@
         <v-row>
           <v-col cols="12" xs="12" sm="12" md="11" lg="11" xl="11">
             <h2>
-              <strong>
-                BukaToko
-              </strong>
+              <strong>{{ company.name }}</strong>
             </h2>
-            <p>
-              BukaToko adalah startup e-commerce pertama di Bojonegoro. Start-up
-              ini membantu IKM di Bojonegoro memasarkan produk mereka.
-            </p>
+            <p>{{ company.description }}</p>
           </v-col>
           <v-col cols="12" xs="12" sm="12" md="1" lg="1" xl="1">
-            <img src="~/assets/img/dot.png" alt="" class="dot" />
+            <img src="~/assets/img/dot.png" alt class="dot" />
           </v-col>
         </v-row>
       </v-container>
@@ -26,81 +21,49 @@
           <h5>
             <img
               src="~/assets/img/portfolio.png"
-              alt=""
+              alt
               width="25px"
               class="mini-img"
             />
-            E-Commerce
+            {{ company.industry }}
           </h5>
           <h5>
             <img
               src="~/assets/img/location.png"
-              alt=""
+              alt
               width="25px"
               class="mini-img"
             />
-            Kab. Bojonegoro
+            {{ company.address }}, {{ company.location }}
           </h5>
         </v-col>
         <v-col cols="12" xs="12" sm="12" md="9" lg="9" xl="9">
-          <h4>
-            Posisi Tersedia
-          </h4>
+          <h4>Posisi Tersedia</h4>
           <v-row>
-            <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4">
+            <v-col
+              v-for="item in listPosition"
+              :key="item.id"
+              cols="12"
+              xs="12"
+              sm="12"
+              md="4"
+              lg="4"
+              xl="4"
+            >
               <v-card class="kotak-perusahaan">
                 <div class="gambar align-center vmiddle">
-                  <img
-                    src="~/assets/img/adobe-illustrator.png"
-                    alt=""
-                    class="inside-pic"
-                  />
-                  <h4>
-                    Graphic
-                  </h4>
-                  <h4>
-                    Designer
+                  <img v-bind:src="item.image" alt class="inside-pic" />
+                  <h4>{{ item.name }}</h4>
+                  <h4 style="font-size: 13px;">{{ item.description }}</h4>
+                  <h4 style="font-size: 13px;">
+                    Nilai min. kelulusan: {{ item.certificate_trigger_score }}
                   </h4>
                 </div>
               </v-card>
               <center>
-                <v-btn id="btnLihatTugas" dark>Lihat Tugas</v-btn>
-              </center>
-            </v-col>
-            <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4">
-              <v-card class="kotak-perusahaan">
-                <div class="gambar align-center vmiddle">
-                  <img src="~/assets/img/ux.png" alt="" class="inside-pic" />
-                  <h4>
-                    UI/UX
-                  </h4>
-                  <h4>
-                    Designer
-                  </h4>
-                </div>
-              </v-card>
-              <center>
-                <v-btn id="btnLihatTugas" dark>Lihat Tugas</v-btn>
-              </center>
-            </v-col>
-            <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4">
-              <v-card class="kotak-perusahaan">
-                <div class="gambar align-center vmiddle">
-                  <img
-                    src="~/assets/img/web-design.png"
-                    alt=""
-                    class="inside-pic"
-                  />
-                  <h4>
-                    Web
-                  </h4>
-                  <h4>
-                    Designer
-                  </h4>
-                </div>
-              </v-card>
-              <center>
-                <v-btn id="btnLihatTugas" dark>Lihat Tugas</v-btn>
+                <v-btn id="btnLihatTugas" @click="seeTask(item)" dark
+                  >Lihat Tugas</v-btn
+                >
               </center>
             </v-col>
           </v-row>
@@ -109,11 +72,7 @@
     </v-container>
   </div>
 </template>
-<script>
-export default {
-  layout: 'OtherPageLayout'
-}
-</script>
+
 <style scoped>
 .banner {
   background-color: #c1f5e4;
@@ -158,7 +117,8 @@ p {
   height: 270px;
 }
 .inside-pic {
-  margin-top: 60px;
+  height: 47%;
+  margin-top: 15px;
   margin-bottom: 10px;
 }
 
@@ -170,3 +130,41 @@ p {
   width: 230px;
 }
 </style>
+
+<script>
+import { mapState, mapMutations, mapActions } from 'vuex'
+export default {
+  layout: 'OtherPageLayout',
+  computed: {
+    ...mapState({
+      listPosition: (state) => state.pilihPosisi.listPosition,
+      company: (state) => state.pilihPerusahaan.company,
+      positionId: (state) => state.pilihPerusahaan.positionId,
+      position: (state) => state.pilihPosisi.position
+    })
+  },
+  mounted() {
+    this.getPosition()
+  },
+  methods: {
+    ...mapActions({
+      getCompanyById: 'pilihPerusahaan/getCompanyById'
+    }),
+    ...mapMutations({ setState: 'pilihPerusahaan/setState' }),
+    async getPosition() {
+      const getAllPositions = await this.$store.dispatch(
+        'pilihPosisi/getAllPosition'
+      )
+      await this.$store.dispatch('pilihPosisi/setAllPosition', getAllPositions)
+    },
+    seeTask(item) {
+      this.setState({ position: item })
+      localStorage.setItem('positionId', item.id)
+      localStorage.setItem('positionName', item.name)
+      localStorage.setItem('positionDesc', item.description)
+      console.log('itemposition', this.position)
+      this.$router.push('/daftar-tugas')
+    }
+  }
+}
+</script>

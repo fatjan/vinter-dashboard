@@ -20,10 +20,9 @@
                 Email Kamu
               </strong>
             </h2>
-            <v-form ref="form" @submit="login">
+            <v-form ref="form" @submit="CompanyLogin">
               <v-text-field
                 v-model="email"
-                :rules="[rules.required, rules.email]"
                 type="email"
                 placeholder="Email"
                 aria-label="Email"
@@ -33,7 +32,6 @@
                 v-model="password"
                 :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
                 :type="showPassword ? 'text' : 'password'"
-                :rules="[rules.required]"
                 @click:append="showPassword = !showPassword"
                 placeholder="Password"
                 aria-label="Password"
@@ -45,8 +43,7 @@
               <strong>
                 <v-btn
                   id="btnSignUp"
-                  @click="login"
-                  type="submit"
+                  @click="CompanyLogin"
                   class="btn btn-primary btn-login"
                 >
                   Sign In</v-btn
@@ -68,6 +65,44 @@
     </v-row>
   </v-app>
 </template>
+
+<script>
+import Swal from 'sweetalert2'
+export default {
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    CompanyLogin(e) {
+      const self = this
+      const req = {
+        url: '/login/company',
+        method: 'post',
+        data: {
+          email: this.email,
+          password: this.password
+        }
+      }
+      this.$axios(req)
+        .then(async function(response) {
+          await console.log(response.data.result)
+          await Swal.fire('success')
+          await self.$router.push('/comptambahposisi')
+          await localStorage.setItem('token', response.data.result)
+          await localStorage.setItem('company_id', response.data.claims.id)
+          await localStorage.setItem('is_login', true)
+        })
+        .catch(function(error) {
+          Swal.fire('password atau username salah')
+          console.log(error)
+        })
+    }
+  }
+}
+</script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700,800&display=swap');
@@ -158,51 +193,3 @@ a:hover {
   }
 }
 </style>
-
-<script>
-import Swal from 'sweetalert2'
-export default {
-  data() {
-    return {
-      email: '',
-      password: '',
-      showPassword: false,
-      formError: null,
-      rules: {
-        required: (value) => !!value || 'Required.',
-        email: (value) => {
-          const pattern = /^([a-zA-Z0-9]+)([._-]??[a-zA-Z0-9]+)+@([a-zA-Z0-9]+)([.-]??[a-zA-Z0-9]+)+([.]{1}[a-zA-Z0-9]{1,3})$/
-          return pattern.test(value) || 'Invalid e-mail.'
-        }
-      }
-    }
-  },
-  methods: {
-    async login(e) {
-      e.preventDefault()
-      if (this.$refs.form.validate()) {
-        await this.$store
-          .dispatch('login/login', {
-            email: this.email,
-            password: this.password
-          })
-          .then(() => {
-            Swal.fire('Login berhasil. \n Selamat Datang di Vinter.')
-            this.formError = null
-            this.$router.push('/dashboard')
-          })
-          .catch((err) => {
-            console.log(err)
-            this.formError = 'email / password salah'
-          })
-      }
-    },
-    toRegister() {
-      this.$router.push('/register')
-    },
-    toHome() {
-      this.$router.push('/')
-    }
-  }
-}
-</script>

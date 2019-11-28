@@ -33,10 +33,12 @@ export const actions = {
         .then((res) => {
           if (res.status === 'success') {
             Swal.fire('Masokkkk')
-            commit('setState', { token: res.result })
-            commit('setState', { userName: res.claims.name })
-            commit('setState', { userEmail: res.claims.email })
-            commit('setState', { userRole: res.claims.role })
+            localStorage.setItem('token', res.result)
+            localStorage.setItem('name', res.claims.name)
+            localStorage.setItem('email', res.claims.email)
+            localStorage.setItem('userRole', res.claims.role)
+            localStorage.setItem('userId', res.claims.id)
+            localStorage.setItem('is_login', true)
             resolve('success')
           }
         })
@@ -54,6 +56,13 @@ export const actions = {
     commit('setState', { userEmail: null })
     commit('setState', { userName: null })
     commit('setState', { userRole: null })
+    localStorage.setItem('token', '')
+    localStorage.setItem('name', '')
+    localStorage.setItem('token', '')
+    localStorage.setItem('email', '')
+    localStorage.setItem('userRole', '')
+    localStorage.setItem('userId', '')
+    localStorage.setItem('is_login', false)
     this.$router.push('/')
   }
 }

@@ -688,8 +688,9 @@ dl {
 /*--- pages ---*/
 
 .page {
-    min-height: 63vh;
-    margin-top: 80px;
+    min-height:63vh;
+    margin-top:80px;
+    font-family: 'Muli', sans-serif !important;
 }
 
 
