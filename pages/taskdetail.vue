@@ -5,10 +5,10 @@
         <v-col lg="2">
           <v-list class="leftSide" dense>
             <v-list-item-group
-              class="mt-10"
-              color="#23573E"
               v-for="(item, i) in listTask"
               :key="i"
+              class="mt-10"
+              color="#23573E"
             >
               <v-list-item @click="toDetailTask(item.id)">
                 <v-list-item-icon>
@@ -24,7 +24,7 @@
         <v-col lg="10">
           <v-container class="grey lighten-5 mt-2">
             <v-row class="fontweightchanger" no-gutters>
-              <h1>{{ reqData.taskName }} {{ task.name }}</h1>
+              <h1>{{ task.name }}</h1>
             </v-row>
             <v-row no-gutters class="mt-2">
               <h3>
@@ -45,7 +45,17 @@
               >
             </v-row>
             <v-row no-gutters class="mt-2">
-              <p>{{ reqData.taskDesc }} {{ task.description }}</p>
+              <p>{{ task.description }}</p>
+            </v-row>
+            <v-row>
+              <v-col lg="6" md="6" sm="12"
+                ><v-file-input
+                  multiple
+                  label="Submit Tugas"
+                  width="500px"
+                ></v-file-input
+              ></v-col>
+              <v-col lg="6" md="6" sm="12"> </v-col>
             </v-row>
             <v-row no-gutters class="mt-2">
               <iframe
