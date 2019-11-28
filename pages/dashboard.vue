@@ -279,7 +279,6 @@ export default {
     this.name = userName.split(' ')[0]
     this.email = localStorage.getItem('email')
     this.getOngoingPosition()
-    this.getCertificate()
   },
   methods: {
     ...mapMutations({ setState: 'dashboard/setState' }),
@@ -290,13 +289,6 @@ export default {
       await this.$store.dispatch('dashboard/setAllOngoing', getAllOngoing)
       this.isLoading = false
     },
-    // async getCertificate() {
-    //   const getCertificate = await this.$store.dispatch(
-    //     'dashboard/getCertificate'
-    //   )
-    //   this.isLoading = false
-    //   // await this.$store.dispatch('dashboard/setCertificate', getCertificate)
-    // },
     toPilihPerusahaan() {
       this.$router.push('/pilih-perusahaan')
     },
