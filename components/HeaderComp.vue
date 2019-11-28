@@ -4,13 +4,10 @@
       <v-layout row wrap>
         <v-flex lg6 md6 sm6>
           <a href="/">
-            <img class="logo-header" src="~/assets/img/logo_color.png" />
+            <img class="logo-header" src="~/assets/img/logo_voc.png" />
           </a>
         </v-flex>
         <v-flex lg6 md6 sm6 class="align-right header-menu">
-          <a href="/pilih-perusahaan" class="nav-list">Pilih Perusahaan</a>
-          <a href="/dashboard" class="nav-list">Dashboard</a>
-          <a href="#" class="nav-list">Akun</a>
           <a href="#">
             <v-btn id="btnSignOut" @click="logout" class="btn btn-primary"
               >Keluar</v-btn
