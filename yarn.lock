@@ -1598,14 +1598,6 @@ axios-retry@^3.1.2:
   dependencies:
     is-retry-allowed "^1.1.0"
 
-axios@^0.18.0:
-  version "0.18.1"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.1.tgz#ff3f0de2e7b5d180e757ad98000f1081b87bcea3"
-  integrity sha512-0BfJq4NSfQXd+SkFdrvFbG7addhYSBA2mQwISr46pD6E5iqkWg02RAs8vyTT/j0RTnoYmeXauBuSv1qKwR179g==
-  dependencies:
-    follow-redirects "1.5.10"
-    is-buffer "^2.0.2"
-
 axios@^0.19.0:
   version "0.19.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.0.tgz#8e09bff3d9122e133f7b8101c8fbdd00ed3d2ab8"
@@ -2747,6 +2739,11 @@ de-indent@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
   integrity sha1-sgOOhG3DO6pXlhKNCAS0VbjB4h0=
+
+debounce@^1.1.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.0.tgz#44a540abc0ea9943018dc0eaa95cce87f65cd131"
+  integrity sha512-mYtLl1xfZLi1m4RtQYlZgJUNQjl4ZxVnHzIR8nLLgi4q1YT8o/WM+MK/f8yfcc9s5Ir5zRaPZyZU6xs1Syoocg==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
@@ -5733,13 +5730,6 @@ nuxt-sweetalert2@^1.0.0:
   dependencies:
     sweetalert2 "7.x"
 
-nuxt-vuex-localstorage@^1.2.6:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/nuxt-vuex-localstorage/-/nuxt-vuex-localstorage-1.2.6.tgz#14f63fba583233bd20fa22d88d134cb7d5fc17eb"
-  integrity sha512-TLH9I/HlzCl5k58XYKBZnekOKgczd9IkKDnA/T+JigGW8a4YXSHQwQBPyouzhIv22iv87WgDRzzEVXOktcxDjg==
-  dependencies:
-    axios "^0.18.0"
-
 nuxt@^2.0.0:
   version "2.10.2"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.10.2.tgz#15ade22dfe281095865df18e6f6e861fcad1ff95"
@@ -8545,6 +8535,13 @@ vue-eslint-parser@^7.0.0:
     espree "^6.1.2"
     esquery "^1.0.1"
     lodash "^4.17.15"
+
+vue-google-charts@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/vue-google-charts/-/vue-google-charts-0.3.2.tgz#fd78c9487c25327da27e0613d78c9d9724ac4c21"
+  integrity sha512-pyNLJvjY1ZTAI91ppqGth9YaA7TA7wuotn33f7PIYkwJ4jmUbm2ZBSEkc2QaGKv8jLHkTg+gYDOmvWDTc9pAvQ==
+  dependencies:
+    debounce "^1.1.0"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
