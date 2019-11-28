@@ -24,7 +24,6 @@ export const actions = {
     }
   },
   login({ commit, state }, { email, password }) {
-    console.log('ini email n pass', email, password)
     return new Promise((resolve, reject) => {
       this.$axios
         .$post('login/intern', {
