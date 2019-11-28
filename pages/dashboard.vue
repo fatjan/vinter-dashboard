@@ -58,7 +58,9 @@
           <h4>Magang Berlangsung</h4>
         </v-col>
         <v-col lg6 class="align-right">
-          <v-btn class="btn-primary">Temukan Lainnya</v-btn>
+          <v-btn @click="toPilihPerusahaan()" class="btn-primary"
+            >Temukan Lainnya</v-btn
+          >
         </v-col>
       </v-row>
       <v-row v-if="ongoing.length === 0">
@@ -80,7 +82,12 @@
           <div class="intern-card green-bg">
             <v-row>
               <div class="intern-img">
-                <img src="~/assets/img/intern-01.png" alt="" />
+                <img
+                  v-if="item.position_image !== null"
+                  :src="item.position_image"
+                  alt=""
+                />
+                <img v-else src="~/assets/img/intern-01.png" alt="" />
               </div>
               <div class="intern-deskrip">
                 <h5>
@@ -93,7 +100,10 @@
                     class="progress-intern"
                   ></div>
                 </div>
-                <v-btn v-if="item.total_task !== 0" class="btn-primary"
+                <v-btn
+                  v-if="item.total_task !== 0"
+                  @click="toListTask(item)"
+                  class="btn-primary"
                   >Lanjutkan Magangmu</v-btn
                 >
                 <p v-else style="color:#adadad; margin-top:10px;">
@@ -129,7 +139,12 @@
           <div class="intern-card green-bg">
             <v-row>
               <div class="intern-img">
-                <img src="~/assets/img/intern-01.png" alt="" />
+                <img
+                  v-if="item.position_image !== null"
+                  :src="item.position_image"
+                  alt=""
+                />
+                <img v-else src="~/assets/img/intern-01.png" alt="" />
               </div>
               <div class="intern-deskrip">
                 <h5>{{ item.position_name }}</h5>
@@ -176,11 +191,16 @@
 }
 .intern-img {
   height: 120px;
-  padding-left: 12px;
-  padding-right: 24px;
+  margin-left: 12px;
+  margin-right: 24px;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .intern-img img {
-  height: 120px;
+  max-height: 120px;
+  width: 120px;
 }
 .intern-deskrip {
   font-family: 'Muli', sans-serif;
@@ -268,19 +288,21 @@ export default {
         'dashboard/getAllOngoing'
       )
       await this.$store.dispatch('dashboard/setAllOngoing', getAllOngoing)
-    },
-    async getCertificate() {
-      const getCertificate = await this.$store.dispatch(
-        'dashboard/getCertificate'
-      )
-      console.log('getCertificate: ', getCertificate)
       this.isLoading = false
-      // await this.$store.dispatch('dashboard/setCertificate', getCertificate)
     },
+    // async getCertificate() {
+    //   const getCertificate = await this.$store.dispatch(
+    //     'dashboard/getCertificate'
+    //   )
+    //   this.isLoading = false
+    //   // await this.$store.dispatch('dashboard/setCertificate', getCertificate)
+    // },
     toPilihPerusahaan() {
       this.$router.push('/pilih-perusahaan')
     },
-    toListTask() {
+    toListTask(item) {
+      localStorage.setItem('companyId', item.company_id)
+      localStorage.setItem('positionId', item.position_id)
       this.$router.push('/daftar-tugas')
     }
   }
