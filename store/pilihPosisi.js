@@ -21,9 +21,12 @@ export const actions = {
     const token = localStorage.getItem('token')
     this.$axios.setToken(token, 'Bearer')
     this.$axios.setHeader('Content-Type', 'application/json', ['get'])
-    return this.$axios.$get('position/listfull').catch((err) => {
-      console.log(err.response)
-    })
+    const companyId = localStorage.getItem('companyId')
+    return this.$axios
+      .$get('position/listfull?company_id=' + companyId)
+      .catch((err) => {
+        console.log(err.response)
+      })
   },
   getPositionById({ state }) {
     const token = localStorage.getItem('token')

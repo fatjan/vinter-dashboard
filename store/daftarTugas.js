@@ -1,7 +1,8 @@
 export const state = () => ({
   listTask: [],
   taskId: '',
-  task: ''
+  task: '',
+  positionChosen: ''
 })
 
 export const mutations = {
@@ -26,8 +27,12 @@ export const actions = {
     const token = localStorage.getItem('token')
     this.$axios.setToken(token, 'Bearer')
     this.$axios.setHeader('Content-Type', 'application/json', ['get'])
-    return this.$axios.$get('task/list').catch((err) => {
-      console.log(err.response)
-    })
+    const companyId = localStorage.getItem('companyId')
+    const positionId = localStorage.getItem('positionId')
+    return this.$axios
+      .$get('task/list?company_id=' + companyId + '&position_id=' + positionId)
+      .catch((err) => {
+        console.log(err.response)
+      })
   }
 }

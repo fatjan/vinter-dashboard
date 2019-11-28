@@ -159,6 +159,9 @@ export default {
     },
     seeTask(item) {
       this.setState({ position: item })
+      localStorage.setItem('positionId', item.id)
+      localStorage.setItem('positionName', item.name)
+      localStorage.setItem('positionDesc', item.description)
       console.log('itemposition', this.position)
       this.$router.push('/daftar-tugas')
     }

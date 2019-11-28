@@ -18,7 +18,7 @@
       <v-col cols="12" xs="12" sm="12" md="9" lg="9" xl="9">
         <v-row>
           <v-col cols="9">
-            <h1>UI/UX Designer</h1>
+            <h1>{{ positionChosen.name }}</h1>
           </v-col>
           <v-col cols="3">
             <v-btn
@@ -30,10 +30,7 @@
             >
           </v-col>
         </v-row>
-        <h5 class="desc">
-          Kamu akan mempelajari interaksi user terhadap produk kami dengan
-          mengikuti materi dan menyelesaikan masalah real yang terjadi.
-        </h5>
+        <h5 class="desc">{{ positionChosen.desc }}</h5>
         <h6>Susunan Materi & Tugas</h6>
         <v-card v-for="item in listTask" :key="item.id" class="kotak-tugas">
           <v-row>
@@ -141,6 +138,11 @@ h6 {
 import { mapState, mapMutations } from 'vuex'
 export default {
   layout: 'OtherPageLayout',
+  data() {
+    return {
+      positionChosen: {}
+    }
+  },
   computed: {
     ...mapState({
       position: (state) => state.pilihPosisi.position,
@@ -149,6 +151,7 @@ export default {
   },
   mounted() {
     this.getTask()
+    this.getPositionChosen()
   },
   methods: {
     ...mapMutations({ setState: 'pilihPerusahaan/setState' }),
@@ -167,7 +170,11 @@ export default {
     lihatMateri() {
       this.$router.push('/taskdetail')
     },
-    daftarMagang() {}
+    daftarMagang() {},
+    getPositionChosen() {
+      this.positionChosen.name = localStorage.getItem('positionName')
+      this.positionChosen.desc = localStorage.getItem('positionDesc')
+    }
   }
 }
 </script>
