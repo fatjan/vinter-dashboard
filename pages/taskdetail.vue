@@ -48,20 +48,26 @@
               <p>{{ task.description }}</p>
             </v-row>
             <v-row>
-              <v-col lg="6" md="6" sm="12"
-                ><v-file-input
-                  multiple
-                  label="Submit Tugas"
-                  width="500px"
-                ></v-file-input
-              ></v-col>
-              <v-col lg="6" md="6" sm="12"> </v-col>
+              <v-form ref="form" @submit="postTask">
+                <v-col lg="6" md="6" sm="12"
+                  ><v-file-input
+                    v-value="file"
+                    multiple
+                    label="Submit Tugas"
+                    width="500px"
+                    on-change="getFile(file)"
+                  ></v-file-input
+                ></v-col>
+                <v-col lg="6" md="6" sm="12">
+                  <v-btn @click="postTask">Submit</v-btn>
+                </v-col>
+              </v-form>
             </v-row>
             <v-row no-gutters class="mt-2">
               <iframe
                 width="80%"
                 height="500px"
-                src="https://www.youtube.com/embed/K2MBKvetdEw"
+                src="https://www.youtube.com/embed/n-beA3gmRsM"
               >
               </iframe>
             </v-row>
@@ -96,6 +102,7 @@ h1 {
 </style>
 
 <script>
+import Swal from 'sweetalert2'
 import { mapState, mapMutations } from 'vuex'
 export default {
   layout: 'OtherPageLayout',
@@ -107,7 +114,8 @@ export default {
       { text: 'Conversions', icon: 'mdi-book-open-page-variant' },
       { text: 'Audience', icon: 'mdi-book-open-page-variant' }
     ],
-    reqData: {}
+    reqData: {},
+    file: ''
   }),
   computed: {
     ...mapState({
@@ -142,6 +150,31 @@ export default {
       localStorage.setItem('taskId', id)
       this.getTaskById()
       this.$router.push('/taskdetail')
+    },
+    getFile(item) {
+      console.log('ini')
+    },
+    async postTask(e) {
+      e.preventDefault()
+      const req = {
+        url: '/donetask',
+        method: 'post',
+        data: {
+          ongoing_task_id: this.task.id,
+          attachment: 'https://drive.google.com'
+        },
+        header: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
+      }
+      await this.$axios(req)
+        .then(function(response) {
+          Swal.fire('File berhasil disubmit.')
+          this.file = ''
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
     }
   }
 }
