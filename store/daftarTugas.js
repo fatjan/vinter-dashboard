@@ -18,6 +18,11 @@ export const actions = {
       listTask: outcome.result
     })
   },
+  setTaskById({ commit }, outcome) {
+    commit('setState', {
+      task: outcome.result
+    })
+  },
   setChosenTask({ commit }, outcome) {
     commit('setState', {
       task: outcome.result
@@ -34,5 +39,14 @@ export const actions = {
       .catch((err) => {
         console.log(err.response)
       })
+  },
+  getTaskById() {
+    const token = localStorage.getItem('token')
+    this.$axios.setToken(token, 'Bearer')
+    this.$axios.setHeader('Content-Type', 'application/json', ['get'])
+    const taskId = localStorage.getItem('taskId')
+    return this.$axios.$get('task?id=' + taskId).catch((err) => {
+      console.log(err.response)
+    })
   }
 }

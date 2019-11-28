@@ -43,7 +43,7 @@
               <center>
                 <v-btn
                   id="btnLihatMateri"
-                  @click="lihatMateri"
+                  @click="lihatMateri(item)"
                   class="vmiddle align-center"
                   dark
                   >Lihat Materi</v-btn
@@ -89,7 +89,7 @@ h5 {
 }
 .desc {
   font-weight: 700;
-  color: #c6c6c6;
+  color: black;
   border-bottom: 2px solid #c6c6c6;
   padding-bottom: 10px;
 }
@@ -166,7 +166,8 @@ export default {
     toPositionPage() {
       this.$router.push('/pilih-posisi')
     },
-    lihatMateri() {
+    lihatMateri(item) {
+      localStorage.setItem('taskId', item.id)
       this.$router.push('/taskdetail')
     },
     daftarMagang() {},

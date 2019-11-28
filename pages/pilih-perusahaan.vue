@@ -117,6 +117,7 @@ export default {
     },
     chooseCompany(companyItem) {
       localStorage.setItem('companyId', companyItem.id)
+      localStorage.setItem('compName', companyItem.name)
       this.setState({ companyId: companyItem.id })
       this.setState({ company: companyItem })
       this.$router.push('/pilih-posisi')
