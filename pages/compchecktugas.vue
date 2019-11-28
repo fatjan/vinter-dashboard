@@ -34,33 +34,37 @@
                 xl="4"
               >
                 <v-card class="kotak-perusahaan">
-                  <div class="gambar align-center vmiddle">
-                    <img
-                      src="~/assets/img/adobe-illustrator.png"
-                      alt=""
-                      class="inside-pic"
-                    />
-                    <h4>Nama:{{ item.intern.name }}</h4>
-                    <h4>Posisi:{{ item.position.name }}</h4>
-                    <h4>
-                      {{ item.intern.name }}
-                    </h4>
-                    <h4>
-                      {{ item.task.name }}
-                    </h4>
-                    <h4>
-                      {{ item.task.description }}
-                    </h4>
+                  <div class="task-info">
+                    <div class="text">
+                      <p>Nama:</p>
+                      <h5>{{ item.intern.name }}</h5>
+                      <p>Posisi:</p>
+                      <h5>{{ item.position.name }}</h5>
+                      <p>Deskripsi Task:</p>
+                      <h5>
+                        {{ item.task.description }}
+                      </h5>
+                    </div>
+                    <div>
+                      <v-row>
+                        <v-col cols="7"> </v-col>
+                        <v-col cols="5">
+                          <a :href="item.attachment" download>
+                            <v-btn id="btnAttachment" dark>Attachment</v-btn>
+                          </a>
+                        </v-col>
+                      </v-row>
+                    </div>
                   </div>
-                  <v-row v-if="item.approve" class="mt-5">
+                  <v-row v-if="item.approve" class="mt-2">
                     <v-col class="ml-4">
-                      <v-text-field></v-text-field>
+                      <!-- <v-text-field></v-text-field> -->
                     </v-col>
                     <v-col>
                       <v-btn id="btnDone" dark>Approved</v-btn>
                     </v-col>
                   </v-row>
-                  <v-row v-else class="mt-5">
+                  <v-row v-else class="mt-2">
                     <v-col class="ml-4">
                       <v-text-field
                         id="skor"
@@ -197,7 +201,7 @@ h1 {
 .banner {
   background-color: #c1f5e4;
   margin-top: 65px;
-  height: 150px;
+  /* height: 150px; */
   padding: 5px 0px;
 }
 .dot {
@@ -205,15 +209,11 @@ h1 {
 }
 h5,
 h4,
-h2,
-p {
+h2 {
   color: #23573e;
 }
-h5 {
-  padding-bottom: 10px;
-}
 p {
-  font-size: 18px;
+  margin-bottom: 0px;
 }
 .left {
   padding-top: 25px;
@@ -227,14 +227,16 @@ p {
   background-color: #d5f8ed !important;
   margin-bottom: 20px;
   /* border-radius: 10% !important; */
+  height: 360px;
 }
-.gambar {
+.task-info {
   background-color: white;
   /* border: 3px solid #23573e; */
   /* padding: 0px; */
   /* margin: 0px; */
   width: 100%;
   height: 270px;
+  padding: 10px 0px 0px 10px;
 }
 .inside-pic {
   margin-top: 60px;
@@ -256,6 +258,17 @@ p {
   box-shadow: none;
   width: 150px;
 }
+
+#btnAttachment {
+  margin-top: 10px;
+  background-color: grey;
+  height: 30px;
+  border-radius: 24px;
+  box-shadow: none;
+  width: 120px;
+  font-size: 14px;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700&display=swap');
 
 .fontchanger {
@@ -275,5 +288,8 @@ p {
 }
 h1 {
   font-weight: 1000;
+}
+.text {
+  height: 190px;
 }
 </style>
