@@ -3,17 +3,13 @@
     <v-row class="rata-kiri">
       <v-col>
         <div class="perusahaan-title align-center vertical-align-center">
-          <h1>
-            Perusahaan
-          </h1>
+          <h1>Perusahaan</h1>
         </div>
       </v-col>
     </v-row>
     <v-row class="rata-kiri">
       <v-col>
-        <h5 class="rekom">
-          Rekomendasi untukmu
-        </h5>
+        <h5 class="rekom">Rekomendasi untukmu</h5>
       </v-col>
     </v-row>
     <v-row class="rata-kiri">
@@ -31,7 +27,7 @@
           <div class="gambar align-center vmiddle">
             <img
               v-bind:src="item.image"
-              alt=""
+              alt
               class="inside-pic"
               style="max-height: 100% !important;
               max-width: 100% !important;
@@ -40,12 +36,10 @@
             />
           </div>
           <div class="text">
-            <h5>
-              {{ item.name }}
-            </h5>
+            <h5>{{ item.name }}</h5>
             <span>
               <p>
-                <img src="~/assets/img/portfolio.png" alt="" width="15px" />
+                <img src="~/assets/img/portfolio.png" alt width="15px" />
                 {{ item.oportunity }} Posisi Magang
               </p>
             </span>
@@ -122,6 +116,7 @@ export default {
       )
     },
     chooseCompany(companyItem) {
+      localStorage.setItem('companyId', companyItem.id)
       this.setState({ companyId: companyItem.id })
       this.setState({ company: companyItem })
       this.$router.push('/pilih-posisi')
