@@ -34,13 +34,25 @@
       <v-container>
         <v-layout row wrap>
           <v-flex lg4>
-            <div class="card" style="height:250px; margin:0px 50px"></div>
+            <div class="card align-center">
+              <div class="circle"></div>
+              <img src="~/assets/img/problem-solving.png" alt="" />
+              <h2>Real Case Problem</h2>
+            </div>
           </v-flex>
           <v-flex lg4>
-            <div class="card" style="height:250px; margin:0px 50px"></div>
+            <div class="card align-center">
+              <div class="circle"></div>
+              <img src="~/assets/img/resume.png" alt="" />
+              <h2>Internship Experience</h2>
+            </div>
           </v-flex>
           <v-flex lg4>
-            <div class="card" style="height:250px; margin:0px 50px"></div>
+            <div class="card align-center">
+              <div class="circle"></div>
+              <img src="~/assets/img/policy.png" alt="" />
+              <h2>Internship Certificate</h2>
+            </div>
           </v-flex>
         </v-layout>
       </v-container>
@@ -72,6 +84,26 @@
 }
 .benefit {
   margin-top: -100px;
+}
+.benefit .card {
+  height: 250px;
+  margin: 0px 50px;
+  padding: 15px;
+}
+.benefit .circle {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: #ff7a76;
+}
+.benefit .card img {
+  margin-top: -100px;
+  height: 110px;
+}
+.benefit .card h2 {
+  margin-top: 20px;
+  font-family: 'Muli', sans-serif;
+  font-weight: 800;
 }
 .btn {
   height: 40px;
@@ -123,6 +155,24 @@
 </style>
 <script>
 export default {
-  layout: 'HomePageLayout'
+  layout: 'HomePageLayout',
+  data() {
+    return {
+      benefit: [
+        {
+          pict: '~/assets/img/problem-solving.png',
+          desc: 'Real Case Problem'
+        },
+        {
+          pict: '~/assets/img/resume.png',
+          desc: 'Internship Experience'
+        },
+        {
+          pict: '~/assets/img/policy.png',
+          desc: 'Internship Certificate'
+        }
+      ]
+    }
+  }
 }
 </script>

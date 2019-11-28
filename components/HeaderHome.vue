@@ -34,7 +34,11 @@
   height: 40px;
 }
 .header-menu a {
-  padding: 10px 10px;
+  padding: 10px 20px;
+}
+.header-menu .btn-login,
+.header-menu .btn-register {
+  margin: 0px 10px;
 }
 .header-menu .nav-list {
   font-family: 'Muli', sans-serif;

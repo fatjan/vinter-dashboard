@@ -27,6 +27,7 @@
         "nuxt": "^2.0.0",
         "nuxt-sweetalert2": "^1.0.0",
         "swal": "^0.1.0",
+        "vue-google-charts": "^0.3.2",
         "vuex-persistedstate": "^2.7.0"
     },
     "devDependencies": {
