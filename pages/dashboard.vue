@@ -118,8 +118,19 @@
         </v-col>
       </v-row>
       <v-row class="done-intern">
-        <v-col lg10>
+        <v-col>
           <h4>Magang Selesai</h4>
+        </v-col>
+        <v-col class="align-right">
+          <v-btn
+            v-if="completed.length > 0"
+            @click="toSertifikat()"
+            class="btn-secondary"
+            >Sertifikatku</v-btn
+          >
+          <v-btn v-else @click="toSertifikat()" class="btn-disable"
+            >Sertifikatku</v-btn
+          >
         </v-col>
       </v-row>
       <v-row v-if="completed.length === 0">
@@ -152,7 +163,6 @@
                 <div class="wrap-progress" style="width:100%">
                   <div class="progress-intern" style="width:100%"></div>
                 </div>
-                <!-- <v-btn class="btn-primary">Lihat Sertifikat</v-btn> -->
               </div>
               <div class="percentage-intern">
                 100%
@@ -235,6 +245,14 @@
   box-shadow: none;
   padding: 6px 20px;
 }
+.btn-secondary {
+  color: #ff7a76;
+  background-color: #fafafa !important;
+  border: solid 2px #ff7a76;
+  font-family: 'Muli', sans-serif;
+  box-shadow: none;
+  border-radius: 24px;
+}
 .btn-disable {
   background-color: #818181;
   color: #fafafa;
@@ -296,6 +314,9 @@ export default {
       localStorage.setItem('companyId', item.company_id)
       localStorage.setItem('positionId', item.position_id)
       this.$router.push('/daftar-tugas')
+    },
+    toSertifikat() {
+      this.$router.push('/sertifikat')
     }
   }
 }
