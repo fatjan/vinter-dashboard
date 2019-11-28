@@ -4,9 +4,8 @@
       <v-col cols="12" xs="12" sm="12" md="3" lg="3" xl="3">
         <v-card class="kotak-perusahaan">
           <div class="gambar align-center vmiddle">
-            <img src="~/assets/img/ux.png" alt class="inside-pic" />
-            <h4>UI/UX</h4>
-            <h4>Designer</h4>
+            <img :src="positionChosen.image" alt class="inside-pic" />
+            <h4>{{ positionChosen.name }}</h4>
           </div>
         </v-card>
         <v-row @click="toPositionPage" class="vmiddle align-right" dark>
@@ -39,7 +38,6 @@
             </v-col>
             <v-col cols="8">
               <h5>{{ item.name }}</h5>
-              <p>{{ item.description }}</p>
             </v-col>
             <v-col cols="3">
               <center>
@@ -80,7 +78,8 @@
   height: 270px;
 }
 .inside-pic {
-  margin-top: 60px;
+  height: 47%;
+  margin-top: 15px;
   margin-bottom: 10px;
 }
 h1,
@@ -174,6 +173,7 @@ export default {
     getPositionChosen() {
       this.positionChosen.name = localStorage.getItem('positionName')
       this.positionChosen.desc = localStorage.getItem('positionDesc')
+      this.positionChosen.image = localStorage.getItem('positionImg')
     }
   }
 }

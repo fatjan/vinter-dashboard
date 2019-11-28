@@ -52,7 +52,18 @@
             >
               <v-card class="kotak-perusahaan">
                 <div class="gambar align-center vmiddle">
-                  <img v-bind:src="item.image" alt class="inside-pic" />
+                  <img
+                    v-if="item.image"
+                    v-bind:src="item.image"
+                    alt
+                    class="inside-pic"
+                  />
+                  <img
+                    v-else
+                    src="~/assets/img/position_img.png"
+                    alt
+                    class="inside-pic"
+                  />
                   <h4>{{ item.name }}</h4>
                   <h4 style="font-size: 13px;">{{ item.description }}</h4>
                   <h4 style="font-size: 13px;">
@@ -162,6 +173,7 @@ export default {
       localStorage.setItem('positionId', item.id)
       localStorage.setItem('positionName', item.name)
       localStorage.setItem('positionDesc', item.description)
+      localStorage.setItem('positionImg', item.image)
       console.log('itemposition', this.position)
       this.$router.push('/daftar-tugas')
     }

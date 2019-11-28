@@ -44,6 +44,7 @@
                 <v-btn
                   id="btnSignUp"
                   @click="CompanyLogin"
+                  type="submit"
                   class="btn btn-primary btn-login"
                 >
                   Sign In</v-btn
